@@ -15,8 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        QQREADAPP_HEADER: ${{ secrets.QQREADAPP_HEADER }}
-        QQREADAPP_VIDEOHD: ${{ secrets.QQREADAPP_VIDEOHD }}
+        QQ_QQreadURL: ${{ secrets.QQ_QQreadURL }}
         COOKIES_SPLIT: ${{ secrets.COOKIES_SPLIT }}
         
     steps:
