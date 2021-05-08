@@ -82,9 +82,9 @@ if ($.isNode()) {
   
    //自定义部分
 
-if (COOKIE.DsjurlVal) {
+if (COOKIE.DsjheaderVal) {
   
-    tokenArr = COOKIE.DsjurlVal.split('\n');
+    tokenArr = COOKIE.DsjheaderVal.split('\n');
     DrawalArr = COOKIE.DrawalVal.split('\n');
 
 
@@ -194,7 +194,8 @@ function signin() {
      {
       $.get({url: `${dianshijia_API}/v5/sign/signin?accelerate=0&ext=0&ticket=`, headers: JSON.parse(signheaderVal)}, async(error, response, data) =>
        {
-      if(logs)$.log(`${$.name}, 签到结果: ${data}\n`)
+      if(logs) $.log(`${$.name}, 签到结果: ${data}\n`)
+      $.log(`${$.name}, 签到结果: ${data}\n`)
       let result = JSON.parse(data)
       if  (result.errCode == 0) 
           { signinres = `签到成功 `
@@ -227,7 +228,8 @@ function signinfo() {
   return new Promise((resolve, reject) => {
      $.get({ url: `${dianshijia_API}/v4/sign/get`, headers: JSON.parse(signheaderVal)}, (error, response, data) => 
   {
-   if(logs)$.log(`${$.name}, 签到信息: ${data}\n`)
+   if(logs) $.log(`${$.name}, 签到信息: ${data}\n`)
+   $.log(`${$.name}, 签到信息: ${data}\n`)
      let result = JSON.parse(data)
      if (result.errCode == 0) 
     {
@@ -510,7 +512,7 @@ function getGametime() {
 function Addsign() {
   return new Promise((resolve, reject) => {
     let url = { 
-     url: `${dianshijia_API}/sign/chooseAdditionalReward?rewardId=45`, 
+     url: `${dianshijia_API}/sign/chooseAdditionalReward?rewardId=${RewardId}`, 
      headers: JSON.parse(signheaderVal),
    }
     $.get(url, (error, response, data) => {
