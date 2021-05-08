@@ -26,15 +26,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.QQREADAPP_HEADER
         run: |
           npm install
       - name: '运行 【QQ阅读APP】'
-        if: env.QQREADAPP_HEADER
         run: |
           node QQread.js
         env:
-          
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
