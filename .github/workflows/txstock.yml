@@ -15,8 +15,14 @@ jobs:
     env:
       URL: "https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js"
       RUNFILE: "jrtt.js"
-      JRTTSIGNURL: ${{ secrets.JRTTSIGNURL }}
-      JRTTSIGNKEY: ${{ secrets.JRTTSIGNKEY }}
+      USERHEADER: ${{ secrets.TX_JUSERHEADER }}
+      USERKEY: ${{ secrets.TX_USERKEY }}
+      CASHHEADER: ${{ secrets.TX_CASHHEADER }}
+      SINGHEADER: ${{ secrets.TX_SINGHEADER }}
+      SINGKEY: ${{ secrets.tx_SINGKEY }}
+      TASKHEADER: ${{ secrets.TX_TASKHEADER }}
+      TASKKEY: ${{ secrets.TX_TASKKEY }}
+      WXTASKKEY: ${{ secrets.TX_WXTASKKEY }}
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
       BARK_PUSH: ${{ secrets.BARK_PUSH }}
       BARK_SOUND: ${{ secrets.BARK_SOUND }}
