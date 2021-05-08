@@ -190,7 +190,8 @@ function userInfo() {
          }
           $.sub = " 昵称:" + username + " 现金:" + enabledmoney + "元 金币:" + availablecoin;
           $.log("\n********** 昵称:" + username + " 现金:" + enabledmoney + "元 **********\n");
-          if (parseInt(enabledmoney) >= Number(withcash) && $.time("HH") == "06") {
+           $.log($.time("HH"));
+          if (parseInt(enabledmoney) >= Number(withcash) && $.time("HH") == "22") {
             await withDraw(withcash);
             $.done()
           };
