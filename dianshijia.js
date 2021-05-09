@@ -46,7 +46,7 @@ const $ = new Env('电视家')
 const notify = $.isNode() ? require('./sendNotify') : '';
 const COOKIE = $.isNode() ? require("./dianshijiaCOOKIE") : ``;
 let sleeping = "",detail=``,subTitle=``;
-let RewardId = $.getdata('REWARD')||'55'; //额外签到奖励，默认55为兑换0.2元额度，44为兑换1天VIP，42为兑换1888金币
+let RewardId = $.getdata('REWARD')||'48'; //额外签到奖励，默认55为兑换0.2元额度，44为兑换1天VIP，42为兑换1888金币
 const dianshijia_API = 'http://api.gaoqingdianshi.com/api'
 let tokenArr = [], DsjurlArr = [], DrawalArr = [],drawalCode="";
 if ($.isNode()) {
