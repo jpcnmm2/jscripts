@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync lxk0301-scripts
+      - name: sync-jpcnmm2-jscripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
