@@ -235,7 +235,7 @@ let headers = rlheader.replace(/acw_tc=\w+/,'')
         if(cash > 0 && Number(result.user.balance) >= cash && Number(result.user.lines) >= Number(result.user.balance)){
         await wallet()
         }
-        message += '🎈'+result.msg+' 邀请码：'+result.user.id+' 昵称：'+result.user.nickname+' 燃旅号：'+result.user.ranlvid +'现有余额：'+result.user.balance + '提现额度：'+result.user.lines+'\n'
+        message += '🎈'+result.msg+' 昵称：'+result.user.nickname+' 现有余额：'+result.user.balance + '提现额度：'+result.user.lines+'\n'
         }else{
         console.log('👀我也不知道\n')
         message += '👀我也不知道\n'
@@ -470,17 +470,17 @@ async function wiTask(){
         const result = JSON.parse(data)
         if(logs) $.log(data)
         if(result.code == 0){
-        message += '🔔【提现任务状态】 '
+        //message += '🔔【提现任务状态】 '
         console.log('🎈'+result.msg+'\n')
 
-        message += '🎈'+result.msg+'\n'
+        //message += '🎈'+result.msg+'\n'
         let praiseArr = result.data.find(item => item.id === 3)
         console.log('点赞任务：'+praiseArr.to_num+'/'+praiseArr.num+' ')
         let commentArr = result.data.find(item => item.id === 4)
         console.log('评论任务：'+commentArr.to_num+'/'+commentArr.num+` `)
         let videoArr = result.data.find(item => item.id === 1)
         console.log('视频任务：'+videoArr.to_num+'/'+videoArr.num+' ')
-        message += '点赞任务：'+praiseArr.to_num+'/'+praiseArr.num+'\n'+'评论任务：'+commentArr.to_num+'/'+commentArr.num+`\n`+'视频任务：'+videoArr.to_num+'/'+videoArr.num+'\n'
+        //message += '点赞任务：'+praiseArr.to_num+'/'+praiseArr.num+'\n'+'评论任务：'+commentArr.to_num+'/'+commentArr.num+`\n`+'视频任务：'+videoArr.to_num+'/'+videoArr.num+'\n'
        if(praiseArr.to_num < praiseArr.num){
         await checkPraise()
         }
