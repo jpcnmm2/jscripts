@@ -129,7 +129,7 @@ function getsign() {
                 $.desc = `说明: ` + get_sign.msg+"\n",
                 $.msg($.name, $.sub, $.desc);
                 if ($.isNode()) {
-          await notify.sendNotify($.name + $.sub, $.desc)
+          notify.sendNotify($.name + $.sub, $.desc)
         }
                 //$.done()
             }
@@ -146,7 +146,7 @@ function withDraw(cash) {
         $.sub = ' 提现成功: 到账 ' + get_cash.data.money + "元 ";
         $.msg($.name, $.sub);
         if ($.isNode()) {
-          await notify.sendNotify($.name + " 成功提现" + withcash + "元\n" + $.sub)
+          notify.sendNotify($.name + " 成功提现" + withcash + "元\n" + $.sub)
         }
       } else {
         $.log(data + "\n " + get_cash.msg);
@@ -221,7 +221,7 @@ function coinexChange() {
                 $.log("兑换成功，"+ exchange.data.message)
                 $.msg($.name, "金币兑换成功，"+ exchange.data.message)
                 if ($.isNode()) {
-          await notify.sendNotify($.name, "金币兑换成功，"+ exchange.data.message)
+          notify.sendNotify($.name, "金币兑换成功，"+ exchange.data.message)
         }
             }
             resolve()
@@ -237,7 +237,7 @@ function TaskCenter() {
       if(get_tasks.errno==7){
       $.msg($.name, get_tasks.msg, "请更换Cookie后，重试");
       if ($.isNode()) {
-          await notify.sendNotify($.name + get_tasks.msg, "请更换Cookie后，重试")
+          notify.sendNotify($.name + get_tasks.msg, "请更换Cookie后，重试")
         }
       return
      } else if(get_tasks.data.uname!=""&&CookieArr.length==1){
@@ -252,7 +252,7 @@ function TaskCenter() {
         if (isblack == true) {
         $.msg($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理");
         if ($.isNode()) {
-          await notify.sendNotify($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理")
+          notify.sendNotify($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理")
         }
         break;
        }
