@@ -128,6 +128,9 @@ function getsign() {
                 $.sub = `签到失败❌`,
                 $.desc = `说明: ` + get_sign.msg+"\n",
                 $.msg($.name, $.sub, $.desc);
+                if ($.isNode()) {
+          await notify.sendNotify($.name + $.sub, $.desc)
+        }
                 //$.done()
             }
             resolve()
@@ -217,6 +220,9 @@ function coinexChange() {
              if (exchange.errno == 0) {
                 $.log("兑换成功，"+ exchange.data.message)
                 $.msg($.name, "金币兑换成功，"+ exchange.data.message)
+                if ($.isNode()) {
+          await notify.sendNotify($.name, "金币兑换成功，"+ exchange.data.message)
+        }
             }
             resolve()
         })
@@ -230,6 +236,9 @@ function TaskCenter() {
         let get_tasks = JSON.parse(data);
       if(get_tasks.errno==7){
       $.msg($.name, get_tasks.msg, "请更换Cookie后，重试");
+      if ($.isNode()) {
+          await notify.sendNotify($.name + get_tasks.msg, "请更换Cookie后，重试")
+        }
       return
      } else if(get_tasks.data.uname!=""&&CookieArr.length==1){
         username = get_tasks.data.uname;
@@ -242,6 +251,9 @@ function TaskCenter() {
         for (x in tasks) {
         if (isblack == true) {
         $.msg($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理");
+        if ($.isNode()) {
+          await notify.sendNotify($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理")
+        }
         break;
        }
           taskid = tasks[x].taskId;
