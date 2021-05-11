@@ -211,9 +211,9 @@ function getsy() {
 	 else {
          wksy = `【挖矿收益】 挖矿失败, 原因:`+result.errmsg
          $.msg($.name, wksy, ``)
-       if ($.isNode()) {
-         await notify.sendNotify($.name, wksy)
-           }//git通知项
+       //if ($.isNode()) {
+         //await notify.sendNotify($.name, wksy)
+           //}//git通知项
          return
         }
      resolve()
