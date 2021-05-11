@@ -49,6 +49,7 @@ const $ = new Env('支付宝天天挖矿')//js名字 支付宝天天挖矿
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 let bodyArr = [],headerArr = [];//定义Secret设置 合集
+let wksign = '';
 
 if (isGetCookie = typeof $request !==`undefined`) {
    GetCookie();
