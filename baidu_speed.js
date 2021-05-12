@@ -180,7 +180,7 @@ function userInfo() {
     $.post(confApi('api/tenure/osname=baiduboxapp','sign=a329b14e561e5f42d466d568623cd972&time=1612958577&productid=2'), async(error, resp, data) =>{
       try {
         let get_pay = JSON.parse(data);
-        //$.log("获取收益信息:"+data +'\n')
+        $.log("获取收益信息:"+data +'\n')
         if (get_pay.errno == 0) {
           availablecoin = get_pay.data.available_coin,
           enabledcoin = get_pay.data.enabled_coin,
