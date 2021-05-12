@@ -153,7 +153,7 @@ if ($request && $request.method != 'OPTIONS' && $request.url.match(/createSign/)
 function getsign() {
   return new Promise((resolve, reject) =>{
    let signurl =  {
-      url: `https://operation-api.jimistore.com/api/mining/v1/sign/createSign`,
+      url: `https://operation-api.jimistore.com/api/mining/v2/sign/createSign`,
       headers: JSON.parse(headerVal),body: bodyVal
 	  }
      $.post(signurl, async(error, response, data) => {
