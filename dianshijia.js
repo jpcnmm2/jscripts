@@ -260,7 +260,7 @@ function cashlist() {
             let result = JSON.parse(data)
             let totalcash = Number(),
                 cashres = "";
-            //console.log(`提现列表: ${data}`)
+            console.log(`提现列表: ${data}`)
             if (result.errCode == 0) {
                 for (s = 0; s < result.data.length; s++) {
                     if (result.data[s].type == '2' && result.data[s].ctime >= parseInt(timestamp/1000)) {
@@ -488,6 +488,7 @@ function Withdrawal() {
             headers: JSON.parse(signheaderVal)
         }, (error, response, data) => {
             if (logs) $.log(`金币随机兑换 : ${data}\n`)
+            $.log(`金币随机兑换 : ${data}\n`)
             let todrawal = JSON.parse(data);
             if (todrawal.errCode == 0) {
                 detail += `【金额提现】✅ 到账` + todrawal.data.price / 100 + `元 🌷\n`
