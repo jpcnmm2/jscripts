@@ -179,8 +179,8 @@ function getsign() {
         } 
 	   resolve()
             } catch (e) {
-                //console.log(e)
-		$.logErr(e,resp)
+                console.log("签到错误信息："+e)
+		//$.logErr(e)
                 resolve()
             }
     })
