@@ -12,7 +12,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         ZFBWK_HEADER: ${{ secrets.ZFBWK_HEADER }}
-        ZFBWK_BODY: ${{ secrets.ZFBWK_HEADER }}
+        ZFBWK_BODY: ${{ secrets.ZFBWK_BODY }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
