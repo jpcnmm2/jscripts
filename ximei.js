@@ -60,6 +60,7 @@ hostname = app.hubonews.com
 const $ = new Env('西梅');
 let status;
 status = (status = ($.getval("ximeistatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
+const notify = $.isNode() ? require("./sendNotify") : ``;
 const ximeiurlArr = [], ximeihdArr = [],ximeicount = ''
 let times = Math.round(Date.now())
 let ximeiurl = $.getdata('ximeiurl')
@@ -375,6 +376,9 @@ await ximeitx();
 
 } else {
        console.log('\n西梅用户信息获取失败  '+result.msg)
+   if ($.isNode()) {
+                await notify.sendNotify($.name, '西梅'+`${$.index}用户信息获取失败  '+result.msg)
+            }
 }
 
         } catch (e) {
