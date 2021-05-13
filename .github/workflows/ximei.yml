@@ -18,17 +18,14 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
-        run: |
-          git clone ${{ secrets.GIT_CLONE_URL }} ~/Scripts
+        uses: actions/checkout@v2
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/Scripts
-          npm install -g npm
-          npm update
+          npm install
       - name: '运行 【西梅】'
         run: |
           node ximei.js
@@ -37,3 +34,5 @@ jobs:
           XIMEI_URL: ${{ secrets.XIMEI_URL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN}}
+          TG_USER_ID: ${{ secrets.TG_USER_ID}}
