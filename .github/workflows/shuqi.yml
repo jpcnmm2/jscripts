@@ -1,0 +1,69 @@
+name: 书旗小说
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '17 0-23 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+          SQ_shuqiuserURL: ${{ secrets.SQ_SHUQIUSERURL }}
+          SQ_shuqisyURL: ${{ secrets.SQ_SHUQISYURL }}
+          SQ_shuqisyBODY: ${{ secrets.SQ_SHUQISYBODY }}
+          SQ_shuqispBODY: ${{ secrets.SQ_SHUQISPBODY }}
+          SQ_shuqiscBODY: ${{ secrets.SQ_SHUQISCBODY }}
+          SQ_shuqiydBODY: ${{ secrets.SQ_SHUQIYDBODY }}
+          SQ_shuqiqdBODY: ${{ secrets.SQ_SHUQIQDBODY }}
+          SQ_shuqirwBODY: ${{ secrets.SQ_shuqiRWBODY }}
+          SQ_shuqifxBODY: ${{ secrets.SQ_SHUQIFXBODY }}
+          SQ_shuqisprwURL: ${{ secrets.SQ_SHUQISPRWURL }}
+          SQ_shuqijlBODY: ${{ secrets.SQ_SHUQIJLBODY }}
+          SQ_shuqisqjlBODY: ${{ secrets.SQ_SHUQISQJLBODY }}
+          SQ_shuqicjyURL: ${{ secrets.SQ_SHUQICJYURL }}
+          SQ_shuqicjcsBODY: ${{ secrets.SQ_SHUQICJCSBODY }}
+          SQ_shuqicjBODY: ${{ secrets.SQ_SHUQICJBODY }}
+          SQ_shuqijsspBODY: ${{ secrets.SQ_SHUQIJSSPBODY }}
+          SQ_shuqijsydURL: ${{ secrets.SQ_SHUQIJSYDURL }}
+          SQ_shuqijsydBODY: ${{ secrets.SQ_SHUQIJSYDBODY }}
+          SQ_shuqijsqdBODY: ${{ secrets.SQ_SHUQIJSQDBODY }}
+          SQ_shuqijsqdspyURL: ${{ secrets.SQ_SHUQIJSQDSPYURL }}
+          SQ_shuqijsqdspBODY: ${{ secrets.SQ_SHUQIJSQDSPBODY }}
+          SQ_shuqijsrwBODY: ${{ secrets.SQ_SHUQIJSRWBODY }}
+          SQ_shuqijsfxBODY: ${{ secrets.SQ_SHUQIJSFXBODY }}
+          SQ_shuqijsbookURL: ${{ secrets.SQ_SHUQIJSBOOKURL }}
+          SQ_shuqijsbookBODY: ${{ secrets.SQ_SHUQIJSBOOKBODY }}
+          SQ_shuqijssprwURL: ${{ secrets.SQ_SHUQIJSSPRWURL }}
+          TZ: Asia/shanghai
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2 # 使用 GitHub 官方缓存 Action。
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【书旗小说】'
+        run: |
+          node task/shuqi.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
