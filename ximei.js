@@ -377,7 +377,7 @@ await ximeitx();
 } else {
        console.log('\n西梅用户信息获取失败  '+result.msg)
    if ($.isNode()) {
-                await notify.sendNotify($.name, '西梅'+`${$.index}用户信息获取失败  '+result.msg)
+                await notify.sendNotify($.name, '西梅'+$.index + '用户信息获取失败  '+result.msg)
             }
 }
 
