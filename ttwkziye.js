@@ -157,7 +157,8 @@ function getsign() {
       headers: JSON.parse(headerVal),body: bodyVal
 	  }
      $.post(signurl, async(error, response, data) => {
-     let result = JSON.parse(data)
+     try {
+	     let result = JSON.parse(data)
      console.log(result)
      if (result.data.success == 'true'){
          wksign = '【天天挖矿】✅ 挖矿成功, 收益:'+result.amount/100+'元💰\n'
@@ -175,8 +176,13 @@ function getsign() {
          await notify.sendNotify($.name, wksign)
            }//git通知项
          return
-        }
-     resolve()
+        } 
+	   resolve()
+            } catch (e) {
+                //console.log(e)
+		$.logErr(e,resp)
+                resolve()
+            }
     })
   })
 }
