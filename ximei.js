@@ -275,7 +275,8 @@ let url = {
 } else {
        console.log('\n西梅阅读失败  '+result.msg)
 await $.wait(1000);
-        await ximeisp();
+        //await ximeisp();
+    await ximei1();
 }
 
         } catch (e) {
