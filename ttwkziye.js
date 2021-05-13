@@ -153,7 +153,7 @@ if ($request && $request.method != 'OPTIONS' && $request.url.match(/createSign/)
 function getsign() {
   return new Promise((resolve, reject) =>{
    let signurl =  {
-      url: `https://operation-api.jimistore.com/api/mining/v2/sign/createSign`,
+      url: `https://operation-api.jimistore.com/api/mining/v1/sign/createSign`,
       headers: JSON.parse(headerVal),body: bodyVal
 	  }
      $.post(signurl, async(error, response, data) => {
@@ -181,6 +181,9 @@ function getsign() {
             } catch (e) {
                 //console.log("签到错误信息："+e)
 		$.logErr(e, response)
+		if ($.isNode()) {
+         await notify.sendNotify($.name,e)
+           }//git通知项
                 $.done()
             }
     })
