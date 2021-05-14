@@ -130,7 +130,7 @@ if (!rlheaderArr[0] && !rlbodyArr[0] && !rlurlArr[0]) {
       rlbody = rlbodyArr[i];
       $.index = i + 1;
       console.log(`\n开始【燃旅视频${$.index}】`)
-      await checkVersion()
+      //await checkVersion()
       await index()
       await userinfo()
       await task_center()
