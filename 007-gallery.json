@@ -6,7 +6,8 @@
         
 
         {
-            "addons": "https://raw.githubusercontent.com/jpcnmm2/jscripts/main/zzsy.txt, tag=招招试药获取header, update-interval=86400, opt-parser=false, enabled=false",
+            "config": "35 9 * * * https://raw.githubusercontent.com/age174/-/main/zzsy.js, tag=招招试药, img-url=https://ae01.alicdn.com/kf/Ub0056a0721e94c9a85a8bbeb2f2aed6fn.jpg, enabled=true",
+	    "addons": "https://raw.githubusercontent.com/jpcnmm2/jscripts/main/zzsy.txt, tag=招招试药获取header, update-interval=86400, opt-parser=false, enabled=false",
         }, 	
 		
     ],
