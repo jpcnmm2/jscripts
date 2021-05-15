@@ -8,7 +8,12 @@
         {
             "config": "5 9 * * * https://raw.githubusercontent.com/jpcnmm2/jscripts/main/zzsy.js, tag=招招试药, img-url=https://ae01.alicdn.com/kf/Ub0056a0721e94c9a85a8bbeb2f2aed6fn.jpg, enabled=true",
 	    "addons": "https://raw.githubusercontent.com/jpcnmm2/jscripts/main/zzsy.txt, tag=招招试药获取header, update-interval=86400, opt-parser=false, enabled=false",
-        }, 	
+        }, 
+	
+	{
+            "config": "10 0 * * * https://raw.githubusercontent.com/jpcnmm2/jscripts/main/bsly.js, tag=百事乐元, img-url=https://ae01.alicdn.com/kf/U2fec2be787b74fb3928d83773822eef56.jpg, enabled=true",
+	    "addons": "https://raw.githubusercontent.com/jpcnmm2/jscripts/main/bsly.txt, tag=百事乐元获取header, update-interval=86400, opt-parser=false, enabled=false",
+        }, 
 		
     ],
 }
