@@ -112,7 +112,7 @@ let url = {
 
         if(resp.statusCode == 200){
         tid = result.shareLink
-        if (tpyeof result.shareNum == "undefined") {
+        if (typeof result.shareNum == "undefined") {
           $.msg($.name, '招招试药cookie已过期，请重新获取！')
         }
         console.log(`\n招招试药💊开始分享任务:\n当前可循环执行任务:${result.shareNum}次,开始循环`)
