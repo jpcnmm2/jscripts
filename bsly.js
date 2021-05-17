@@ -117,7 +117,7 @@ let url = {
 } else {
 
         $.log(`\n百事乐元签到:${result.message}`)
-        $.msg($.name, '百事乐元签到:${result.message}')
+        $.msg($.name, `百事乐元签到:${result.message}`)
  
 }
    
