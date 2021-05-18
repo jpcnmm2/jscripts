@@ -622,8 +622,8 @@ async function signtask() {
       url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&action=signdone&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
       //body: ``,
       headers: {
-        //'Cookie': `${taskkeyVal}`,
-        'Cookie': `${signkeyVal}`,
+        'Cookie': `${taskkeyVal}`,
+        //'Cookie': `${signkeyVal}`,
         'Accept': `application/json, text/plain, */*`,
         'Connection': `keep-alive`,
         'Referer': `https://wzq.tenpay.com/activity/page/welwareCenter/`,
