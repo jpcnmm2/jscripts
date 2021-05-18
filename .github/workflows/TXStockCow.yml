@@ -11,14 +11,14 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
       
-      USERHEADER: ${{ secrets.TXS_USERHEADER }}
-      USERKEY: ${{ secrets.TXS_USERKEY }}
-      SIGNHEADER: ${{ secrets.TXS_SIGNHEADER }}
-      SIGNKEY: ${{ secrets.TXS_SIGNKEY }}
-      TASKHEADER: ${{ secrets.TXS_TASKHEADER }}
-      TASKKEY: ${{ secrets.TXS_TASKKEY }}
-      WXTASKKEY: ${{ secrets.TXS_WXTASKKEY }}
-      COWKEY: ${{ secrets.TXS_COWKEY }}
+      USERHEADER: ${{ secrets.TX_USERHEADER }}
+      USERKEY: ${{ secrets.TX_USERKEY }}
+      SIGNHEADER: ${{ secrets.TX_SIGNHEADER }}
+      SIGNKEY: ${{ secrets.TX_SIGNKEY }}
+      TASKHEADER: ${{ secrets.TX_TASKHEADER }}
+      TASKKEY: ${{ secrets.TX_TASKKEY }}
+      WXTASKKEY: ${{ secrets.TX_WXTASKKEY }}
+      COWKEY: ${{ secrets.TX_COWKEY }}
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
       BARK_PUSH: ${{ secrets.BARK_PUSH }}
       BARK_SOUND: ${{ secrets.BARK_SOUND }}
@@ -46,4 +46,4 @@ jobs:
       - name: '运行 【腾讯自选股养牛】'
         
         run: |
-          node Task/TXStockCow.js
+          node TXStockCow.js
