@@ -961,7 +961,8 @@ async function userhome() {
       url: `https://wzq.tenpay.com/cgi-bin/activity_usercenter.fcgi?channel=1&g_openid=${userheaderVal}`,
       
       headers: {
-        'Cookie': `${userkeyVal}`,
+ //       'Cookie': `${userkeyVal}`,
+        'Cookie': `${signkeyVal}`,
         'Accept': `*/*`,
         'Connection': `keep-alive`,
         'Content-Type': `application/x-www-form-urlencoded`,
