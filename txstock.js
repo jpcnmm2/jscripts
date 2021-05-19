@@ -623,8 +623,8 @@ async function signtask() {
       url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&channel=1&type=welfare_sign&action=home&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
 
       headers: {
-        'Cookie': `${taskkeyVal}`,
-        //'Cookie': `${signkeyVal}`,
+        //'Cookie': `${taskkeyVal}`,
+        'Cookie': `${signkeyVal}`,
         'Accept': `application/json, text/plain, */*`,
         'Connection': `keep-alive`,
         'Referer': `https://wzq.tenpay.com/activity/page/welwareCenter/`,
