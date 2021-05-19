@@ -623,8 +623,8 @@ async function wxtask11() {
 async function signtask() {
   return new Promise((resolve) => {
     let signurl = {
-//      url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&action=signdone&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
-      url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&channel=1&type=welfare_sign&action=home&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
+      url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&action=signdone&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
+//      url: `https://wzq.tenpay.com/cgi-bin/activity_sign_task.fcgi?actid=2002&channel=1&type=welfare_sign&action=home&date=${signday}&_=${rndtime}&openid=${signheaderVal}`,
 
       headers: {
         //'Cookie': `${taskkeyVal}`,
