@@ -244,10 +244,6 @@ if (COOKIE.userheaderVal) {
   taskheaderVal = taskheaderArr[0];
   taskkeyVal = taskkeyArr[0];
   wxtaskkeyVal = wxtaskkeyArr[0];
-   console.log(`\n✅ 查询目前账户金币\n`)
-  await userhome(); //金币查询
-  console.log(`\n✅ 执行【签到】任务\n`)
-  await signtask();
   if((hour == 15 && minute >= 15) || (hour == 16) || (hour == 17) || (hour == 18) || (hour == 19) || (hour == 20) || (hour == 21) || (hour == 22) || (hour == 23)){
     await txstock();
   }else{
