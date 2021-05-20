@@ -146,7 +146,7 @@ function withDraw(cash) {
         $.sub = ' 提现成功: 到账 ' + get_cash.data.money + "元 ";
         $.msg($.name, $.sub);
         if ($.isNode()) {
-          notify.sendNotify($.name + " 成功提现" + withcash + "元\n" + $.sub)
+          notify.sendNotify($.name, $.sub)
         }
       } else {
         $.log(data + "\n " + get_cash.msg);
@@ -221,7 +221,7 @@ function coinexChange() {
                 $.log("兑换成功，"+ exchange.data.message)
                 $.msg($.name, "金币兑换成功，"+ exchange.data.message)
                 if ($.isNode()) {
-          notify.sendNotify($.name + username, "金币兑换成功，"+ exchange.data.message)
+          notify.sendNotify($.name + username, $.sub + "\n金币兑换成功，"+ exchange.data.message)
         }
             }
             resolve()
