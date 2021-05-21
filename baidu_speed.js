@@ -191,7 +191,7 @@ function userInfo() {
          } else {
           username = "账号"+ $.index
          }
-          $.sub = " 昵称:" + username + " 现金:" + enabledmoney + "元 金币:" + availablecoin;
+          $.sub = "昵称:" + username + " 现金:" + enabledmoney + "元 金币:" + availablecoin;
           $.log("\n********** 昵称:" + username + " 现金:" + enabledmoney + "元 **********\n");
            $.log($.time("HH"));
           if (parseInt(enabledmoney) >= Number(withcash) && $.time("HH") == "22") {
