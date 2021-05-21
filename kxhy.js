@@ -596,6 +596,9 @@ async function tasklist(){
           if(statu0 == 2 && statu1 == 2 && statu2 == 2 ){
              $.log("每日福利已完成\n")
              $.log("福利完成进度："+result.result.redNum+"/"+result.result.redNumLimit+"\n")
+             if ($.isNode() && (result.result.redNum >= result.result.redNumLimit)) {
+          notify.sendNotify($.name, "⚽红心已满，请及时提现！！！")
+        }
           }else{
          let taskid = data.match(/taskId":\d+/g)
           //$.log(taskid)
@@ -605,11 +608,14 @@ async function tasklist(){
           await daily()
 }
 }
-        }else
+        }
+       else {
+           
           $.log(result.message+"\n")
           if ($.isNode()) {
           notify.sendNotify($.name, result.message)
         }
+       }
         }catch(e) {
           $.logErr(e, response);
       } finally {
