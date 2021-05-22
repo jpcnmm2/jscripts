@@ -317,7 +317,8 @@ async function cashorder(cash, money) {
     await cashticket(); //申请票据
     console.log(`开始申请提现1元...`)
     await getcash1(cashticket);
-  } else if (cash == 5 && money.icon_amount > 48000){
+  //} else if (cash == 5 && money.icon_amount > 48000){
+  } else if (cash == 5){
     console.log(`开始申请票据...`)
     await cashticket(); //申请票据
     console.log(`开始申请提现5元...`)
