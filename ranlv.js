@@ -876,12 +876,12 @@ async function showmsg(){
 if(tz==1){
     $.log(message+note)
     if ($.isNode()){
-    if (hour == 21) {
+    if (hour == 21 && minute <= 45) {
        await notify.sendNotify($.name,message+note)
      }
    }else{
      $.log(message+note)
-    //if ((hour == 12 && minute <= 20) || (hour == 23 && minute ，= 40)) {
+    //if ((hour == 12 && minute <= 20) || (hour == 23 && minute <= 40)) {
        $.msg(zhiyi,'',message+note)
 //}
 }
