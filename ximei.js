@@ -69,6 +69,7 @@ let ximeihd = $.getdata('ximeihd')
 let st = '@123hb#*^&xiMEI99'
 let ximeikey = '',id = '',uid='',tid='',name='',uuid=''
 
+!(async () => {
 if (typeof $request !== "undefined") {
     await ximeick()
    
@@ -106,7 +107,7 @@ if ($.isNode()) {
    ximeihdArr.push($.getdata(`ximeihd${i}`))
  }
 }
-}
+}}
 
 !(async () => {
   if (ximeihdArr == "") {
