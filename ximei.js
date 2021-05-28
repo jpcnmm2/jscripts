@@ -243,6 +243,7 @@ function ximeisp(timeout = 0) {
           if(resp.statusCode == 200){
   
           console.log('\n西梅视频观看成功')
+          console.log(resp)
           await $.wait(1000);
           
   } else {
