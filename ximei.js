@@ -124,7 +124,7 @@ if ($.isNode()) {
         $.index = i + 1;
         console.log(`\n开始【西梅${$.index}】`)
         await ximei1();
-        await ximeiid();
+        //await ximeiid();
         await ximeixx();
       }
     }
