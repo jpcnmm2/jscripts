@@ -554,7 +554,8 @@ async function cashlist(){
    	}
    $.get(cashlist_url,async(error, response, data) =>{
     try{
-        const result = JSON.parse(data)
+       $.log(data) 
+       const result = JSON.parse(data)
         if(logs)$.log(data)
         if(result.code == 0){
           $.log("今日打卡进度："+result.result.cashLimit.todayVideoNum+"/"+result.result.signVideo+"\n")
@@ -585,7 +586,8 @@ async function tasklist(){
    	}
    $.get(tasklist_url,async(error, response, data) =>{
     try{
-        const result = JSON.parse(data)
+       $.log(data) 
+       const result = JSON.parse(data)
         if(logs)$.log(data)
         if(result.code == 0){
           let statues = data.match(/"state":\d/g)
