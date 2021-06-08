@@ -264,7 +264,7 @@ function showmsg() {
 
   if (notifyInterval == 1) {
     $.msg(O, '\n', tz);
-    if ($.isNode() && (hour == 16)) {
+    if ($.isNode() && (hour >= 16)) {
        notify.sendNotify($.name,tz)
      }
   }
