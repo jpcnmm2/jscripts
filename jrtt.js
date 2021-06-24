@@ -709,7 +709,7 @@ var Time = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
 async function showmsg(){
 if(tz==1){
     //if ($.isNode()&& (Time.getHours() == 12 && Time.getMinutes() <= 20) || (Time.getHours() == 23 && Time.getMinutes() >= 40)) {
-    if ($.isNode()&& (Time.getHours() == 23)) {
+    if ($.isNode()&& (Time.getHours() == 23 && Time.getMinutes() <= 42)) {
        await notify.sendNotify($.name,other)
      }else{
        $.msg(jsname,'',other)
