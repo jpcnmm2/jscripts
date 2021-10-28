@@ -260,7 +260,7 @@ function TaskCenter() {
           taskid = tasks[x].taskId;
           id = tasks[x].id;
            $.log(tasks[x].data.title);  
-           $.log(tasks[x].data);  
+           $.log(JSON.stringify(tasks[x]));  
           if (tasks[x].name == "signIn") {
             for (z in tasks[x].data.checkin_list) {
               signs = tasks[x].data.checkin_list
