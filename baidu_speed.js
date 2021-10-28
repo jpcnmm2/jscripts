@@ -248,7 +248,7 @@ function TaskCenter() {
 
         $.log("      🛎 ========== 任务开始 ========== 🛎     "); 
         tasks = get_tasks.data.comps;
-        $.log("      🛎 ========== 任务详情 ========== 🛎     "+tasks);  
+        $.log(tasks);  
         for (x in tasks) {
         if (isblack == true) {
         $.msg($.name + " 账号" + username + "已黑号", "您的金币和余额已被冻结，请联系客服处理");
