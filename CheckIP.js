@@ -224,6 +224,6 @@ var ip = obj['query'];
 /*
 var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n'+'DNS:'+ obj['reverse'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+obj['district']+'\n' +'洲际:'+obj['continent'] +'\n'+'IP:'+obj['query'] +'\n' +'托管:'+ obj['hosting'];
 */
-var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n' +'国家:'+ obj['country'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+'\n'+'城市:'+obj['city'])'\n' +'IP:'+obj['query'];
+var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n' +'国家:'+ obj['country'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+'\n'+'城市:'+obj['city'])+'\n' +'IP:'+obj['query'];
 
 $done({title, subtitle, ip, description});
