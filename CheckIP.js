@@ -67,6 +67,9 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Taiwan Fixed Network")   {
    return "台湾固网股份有限公司" 
    }
+   else if(para=="Oracle Corporation")   {
+   return "甲骨文公司" 
+   }
    else
    {
    return para
@@ -113,6 +116,9 @@ $task.fetch(myRequest).then(response => {
    else if(regionName=="Sha Tin"){
    return "沙田"
    }
+  else if(regionName=="Shatin"){
+   return "沙田"
+   }
   else if(regionName=="Tai Wai"){
    return "大围村"
    }
@@ -124,6 +130,10 @@ $task.fetch(myRequest).then(response => {
    {
    return "弗里蒙特"
    }
+   else if(regionName=="Ashburn")
+   {
+   return "阿什本"
+   }
    else if(regionName=="Heiwajima")
    {
    return "平和岛"
@@ -131,6 +141,10 @@ $task.fetch(myRequest).then(response => {
    else if(regionName=="Tokyo")
    {
    return "东京"
+   }
+   else if(regionName=="Osaka")
+   {
+   return "大阪"
    }
    else if(regionName=="Taichung")
    {
@@ -142,14 +156,6 @@ $task.fetch(myRequest).then(response => {
    }
  }
  function Org_ValidCheck(para) { 
-   if(para.indexOf("Networks Limited")>-1){
-    para = para.replace("Networks Limited","网络技术有限公司")
-    return para
-   }
-   if(para.indexOf("AWS")>-1){
-    para = para.replace("AWS","亚马逊云服务")
-    return para
-   }
    if(para=="Microsoft Azure Cloud (eastasia)"){
    return "微软云服务"
    } 
@@ -165,11 +171,14 @@ $task.fetch(myRequest).then(response => {
    else if(para=="DigitalOcean, LLC"){
    return "数字海洋" 
    }
-   else if(para=="AWS EC2 (us-west-2)"){
-   return "亚马逊西部云服务" 
+   else if(para.indexOf("AWS EC2 (us-west")>-1){
+   return "亚马逊美西云服务" 
+   }
+   else if(para.indexOf("AWS EC2 (us-east")>-1){
+   return "亚马逊美东云服务" 
    }
    else if(para=="AWS EC2 (ap-northeast-2)"){
-   return "亚马逊东北亚服务器" 
+   return "亚马逊东北亚云服务" 
    }
    else if(para=="AWS EC2 (ap-southeast-1)"){
    return "亚马逊东南亚云服务"
@@ -201,6 +210,10 @@ $task.fetch(myRequest).then(response => {
    {
    return "香港阿里云"
    }
+   else if(para.indexOf("Tencent")>-1)
+   {
+   return "腾讯云服务"
+   }
    else if(para=="HGC Global Communications Limited")
    {
    return "和记环球电讯"
@@ -208,6 +221,18 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Quicksilver Express Courier, Inc.")
    {
    return "快银快递"
+   }
+   else if(para.indexOf("Oracle Cloud Infrastructure (eu-")>-1)
+   {
+   return "甲骨文欧洲云服务"
+   }
+   else if(para.indexOf("Networks Limited")>-1){
+    para = para.replace("Networks Limited","网络技术有限公司")
+    return para
+   }
+   else if(para.indexOf("AWS")>-1){
+    para = para.replace("AWS","亚马逊云服务")
+    return para
    }
    else
    {
@@ -218,12 +243,12 @@ $task.fetch(myRequest).then(response => {
  var flags = new Map([[ "AC" , "🇦🇨" ] , [ "AF" , "🇦🇫" ] , [ "AI" , "🇦🇮" ] , [ "AL" , "🇦🇱" ] , [ "AM" , "🇦🇲" ] , [ "AQ" , "🇦🇶" ] , [ "AR" , "🇦🇷" ] , [ "AS" , "🇦🇸" ] , [ "AT" , "🇦🇹" ] , [ "AU" , "🇦🇺" ] , [ "AW" , "🇦🇼" ] , [ "AX" , "🇦🇽" ] , [ "AZ" , "🇦🇿" ] , [ "BB" , "🇧🇧" ] , [ "BD" , "🇧🇩" ] , [ "BE" , "🇧🇪" ] , [ "BF" , "🇧🇫" ] , [ "BG" , "🇧🇬" ] , [ "BH" , "🇧🇭" ] , [ "BI" , "🇧🇮" ] , [ "BJ" , "🇧🇯" ] , [ "BM" , "🇧🇲" ] , [ "BN" , "🇧🇳" ] , [ "BO" , "🇧🇴" ] , [ "BR" , "🇧🇷" ] , [ "BS" , "🇧🇸" ] , [ "BT" , "🇧🇹" ] , [ "BV" , "🇧🇻" ] , [ "BW" , "🇧🇼" ] , [ "BY" , "🇧🇾" ] , [ "BZ" , "🇧🇿" ] , [ "CA" , "🇨🇦" ] , [ "CF" , "🇨🇫" ] , [ "CH" , "🇨🇭" ] , [ "CK" , "🇨🇰" ] , [ "CL" , "🇨🇱" ] , [ "CM" , "🇨🇲" ] , [ "CN" , "🇨🇳" ] , [ "CO" , "🇨🇴" ] , [ "CP" , "🇨🇵" ] , [ "CR" , "🇨🇷" ] , [ "CU" , "🇨🇺" ] , [ "CV" , "🇨🇻" ] , [ "CW" , "🇨🇼" ] , [ "CX" , "🇨🇽" ] , [ "CY" , "🇨🇾" ] , [ "CZ" , "🇨🇿" ] , [ "DE" , "🇩🇪" ] , [ "DG" , "🇩🇬" ] , [ "DJ" , "🇩🇯" ] , [ "DK" , "🇩🇰" ] , [ "DM" , "🇩🇲" ] , [ "DO" , "🇩🇴" ] , [ "DZ" , "🇩🇿" ] , [ "EA" , "🇪🇦" ] , [ "EC" , "🇪🇨" ] , [ "EE" , "🇪🇪" ] , [ "EG" , "🇪🇬" ] , [ "EH" , "🇪🇭" ] , [ "ER" , "🇪🇷" ] , [ "ES" , "🇪🇸" ] , [ "ET" , "🇪🇹" ] , [ "EU" , "🇪🇺" ] , [ "FI" , "🇫🇮" ] , [ "FJ" , "🇫🇯" ] , [ "FK" , "🇫🇰" ] , [ "FM" , "🇫🇲" ] , [ "FO" , "🇫🇴" ] , [ "FR" , "🇫🇷" ] , [ "GA" , "🇬🇦" ] , [ "GB" , "🇬🇧" ] , [ "HK" , "🇭🇰" ] , [ "ID" , "🇮🇩" ] , [ "IE" , "🇮🇪" ] , [ "IL" , "🇮🇱" ] , [ "IM" , "🇮🇲" ] , [ "IN" , "🇮🇳" ] , [ "IS" , "🇮🇸" ] , [ "IT" , "🇮🇹" ] , [ "JP" , "🇯🇵" ] , [ "KR" , "🇰🇷" ] , [ "MO" , "🇲🇴" ] , [ "MX" , "🇲🇽" ] , [ "MY" , "🇲🇾" ] , [ "NL" , "🇳🇱" ] , [ "PH" , "🇵🇭" ] , [ "RO" , "🇷🇴" ] , [ "RS" , "🇷🇸" ] , [ "RU" , "🇷🇺" ] , [ "RW" , "🇷🇼" ] , [ "SA" , "🇸🇦" ] , [ "SB" , "🇸🇧" ] , [ "SC" , "🇸🇨" ] , [ "SD" , "🇸🇩" ] , [ "SE" , "🇸🇪" ] , [ "SG" , "🇸🇬" ] , [ "TH" , "🇹🇭" ] , [ "TN" , "🇹🇳" ] , [ "TO" , "🇹🇴" ] , [ "TR" , "🇹🇷" ] , [ "TV" , "🇹🇻" ] , [ "TW" , "🇨🇳" ] , [ "UA" , "🇺🇦" ] , [ "UK" , "🇬🇧" ] , [ "UM" , "🇺🇲" ] , [ "US" , "🇺🇸" ] , [ "UY" , "🇺🇾" ] , [ "UZ" , "🇺🇿" ] , [ "VA" , "🇻🇦" ] , [ "VE" , "🇻🇪" ] , [ "VG" , "🇻🇬" ] , [ "VI" , "🇻🇮" ] , [ "VN" , "🇻🇳" ] , [ "ZA" , "🇿🇦" ]])
  var body = $response.body;
  var obj = JSON.parse(body);
- var title =flags.get(obj['countryCode'])+' '+''+ City_ValidCheck(obj['city']);
-var subtitle =Org_ValidCheck(obj['org']) + " ➠ "+ obj['country'];
+ var title = flags.get(obj['countryCode'])+' '+ City_ValidCheck(obj['city']);
+var subtitle = Org_ValidCheck(obj['org']) + " ➠ "+ obj['country'];
 var ip = obj['query'];
 /*
 var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n'+'DNS:'+ obj['reverse'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+obj['district']+'\n' +'洲际:'+obj['continent'] +'\n'+'IP:'+obj['query'] +'\n' +'托管:'+ obj['hosting'];
 */
-var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n' +'国家:'+ obj['country'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+'\n'+'城市:'+obj['city']+'\n' +'IP:'+obj['query'];
+var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n' +'国家:'+ obj['country'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+'\n'+'城市:'+ City_ValidCheck(obj['city'])+'\n' +'IP:'+obj['query'];
 
 $done({title, subtitle, ip, description});
