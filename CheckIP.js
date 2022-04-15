@@ -229,7 +229,7 @@ $task.fetch(myRequest).then(response => {
    else if(para.indexOf("Oracle Cloud Infrastructure")>-1)
    {
    para = para.replace("Oracle Cloud Infrastructure","甲骨文云服务")
-   retur para
+   return para
    }
    else if(para.indexOf("Networks Limited")>-1){
     para = para.replace("Networks Limited","网络技术有限公司")
