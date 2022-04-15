@@ -156,6 +156,10 @@ $task.fetch(myRequest).then(response => {
    }
  }
  function Org_ValidCheck(para) { 
+   if(para.indexOf("AWS")>-1){
+    para = para.replace("AWS","亚马逊云服务")
+    return para
+   }
    if(para=="Microsoft Azure Cloud (eastasia)"){
    return "微软云服务"
    } 
@@ -222,16 +226,13 @@ $task.fetch(myRequest).then(response => {
    {
    return "快银快递"
    }
-   else if(para.indexOf("Oracle Cloud Infrastructure (eu-")>-1)
+   else if(para.indexOf("Oracle Cloud Infrastructure")>-1)
    {
-   return "甲骨文欧洲云服务"
+   para = para.replace("Oracle Cloud Infrastructure","甲骨文云服务")
+   retur para
    }
    else if(para.indexOf("Networks Limited")>-1){
     para = para.replace("Networks Limited","网络技术有限公司")
-    return para
-   }
-   else if(para.indexOf("AWS")>-1){
-    para = para.replace("AWS","亚马逊云服务")
     return para
    }
    else
