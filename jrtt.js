@@ -220,6 +220,7 @@ if (!signurlArr[0]) {
   for (let i = 0; i < signurlArr.length; i++) {
     if (signurlArr[i]) {
       other = ''
+      other2 = ''
       signurl = signurlArr[i];
       signkey = signkeyArr[i];
       farmurl = farmurlArr[i];
@@ -316,6 +317,7 @@ return new Promise((resolve, reject) => {
   
 }else{
           other +='📣首页签到:已完成\n'
+     other2= other
           //other +='今日已完成签到\n'
            }
           resolve()
@@ -710,7 +712,8 @@ async function showmsg(){
 if(tz==1){
     //if ($.isNode()&& (Time.getHours() == 12 && Time.getMinutes() <= 20) || (Time.getHours() == 23 && Time.getMinutes() >= 40)) {
     if ($.isNode()&& (Time.getHours() == 23 && Time.getMinutes() <= 42)) {
-       await notify.sendNotify($.name,other)
+       //await notify.sendNotify($.name,other)
+       await notify.sendNotify($.name,other2)
      }else{
        $.msg(jsname,'',other)
 }
