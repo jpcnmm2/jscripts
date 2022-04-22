@@ -67,7 +67,7 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Taiwan Fixed Network")   {
    return "台湾固网股份有限公司" 
    }
-   else if(para=="Oracle Corporation")   {
+   else if (para=="Oracle Corporation")   {
    return "甲骨文公司" 
    }
    else if(para=="LoadEdge Limited")   {
@@ -228,6 +228,10 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Quicksilver Express Courier, Inc.")
    {
    return "快银快递"
+   }
+   else if(para=="Oracle Corporation")
+   {
+   return "甲骨文云服务"
    }
    else if(para.indexOf("Oracle Cloud Infrastructure")>-1)
    {
