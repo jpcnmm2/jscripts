@@ -67,16 +67,13 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Taiwan Fixed Network")   {
    return "台湾固网股份有限公司" 
    }
-   else if(para=="Eons Data Communications Limited")
-   {
+   else if(para=="Eons Data Communications Limited")   {
    return "Eons数据通讯"
    }
-   else if(para.indexOf("UCloud Information Technology") > -1 )
-   {
+   else if(para.indexOf("UCloud Information Technology") > -1 )   {
    return "UCloud信息科技"
    }
-  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )
-   {
+  else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )   {
    return "VirMach"
    }
    else if (para=="Oracle Corporation")   {
