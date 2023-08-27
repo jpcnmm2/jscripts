@@ -70,7 +70,7 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Eons Data Communications Limited")   {
    return "Eons数据通讯"
    }
-   else if(para.indexOf("UCloud Information Technology") > -1 )   {
+   else if(para.indexOf("UCLOUD INFORMATION TECHNOLOGY") > -1 )   {
    return "UCloud信息科技"
    }
   else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )   {
@@ -242,7 +242,7 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Eons Data Communications Limited")   {
    return "Eons数据通讯"
    }
-   else if(para.indexOf("UCloud Information Technology") > -1 )   {
+   else if(para.indexOf("UCLOUD INFORMATION TECHNOLOGY") > -1 )   {
    return "UCloud信息科技"
    }
   else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )    {
