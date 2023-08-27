@@ -278,7 +278,7 @@ $task.fetch(myRequest).then(response => {
  var body = $response.body;
  var obj = JSON.parse(body);
  var title = flags.get(obj['countryCode'])+' '+ City_ValidCheck(obj['city']);
-var subtitle = Org_ValidCheck(obj['org']) + " ➠ "+ obj['country']; }
+var subtitle = Org_ValidCheck(obj['org']) + " ➠ "+ obj['country']; 
 if  (obj['org'] == "") { 
     subtitle = Org_ValidCheck(obj['isp']) + " ➠ "+ obj['country']; 
 }
