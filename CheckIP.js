@@ -289,8 +289,9 @@ $task.fetch(myRequest).then(response => {
  var obj = JSON.parse(body);
  var title = flags.get(obj['countryCode'])+' '+ City_ValidCheck(obj['city']);
 var subtitle = Org_ValidCheck(obj['org']) + " ➠ "+ obj['country']; }
-if  (obj['org'] == "") { subtitle = Org_ValidCheck(obj['isp']) + " ➠ "+ obj['country']; }
-
+if  (obj['org'] == "") { 
+    subtitle = Org_ValidCheck(obj['isp']) + " ➠ "+ obj['country']; 
+}
 var ip = obj['query'];
 /*
 var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n'+'DNS:'+ obj['reverse'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+obj['district']+'\n' +'洲际:'+obj['continent'] +'\n'+'IP:'+obj['query'] +'\n' +'托管:'+ obj['hosting'];
