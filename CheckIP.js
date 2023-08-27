@@ -180,7 +180,7 @@ $task.fetch(myRequest).then(response => {
     para = para.replace("AWS","亚马逊云服务")
     return para
    }
-   if(para.indexOf("Microsoft Azure Cloud")){
+   if(para.indexOf("Microsoft Azure Cloud") >-1 ){
     para = para.replace("Microsoft Azure Cloud","微软云服务")
     return "微软云服务"
    } 
@@ -230,44 +230,34 @@ $task.fetch(myRequest).then(response => {
    {
    return "RESNET住宅网络解决方案" 
    }
-   else if(para=="Hong Kong Broadband Network Ltd")  
-   {
+   else if(para=="Hong Kong Broadband Network Ltd")   {
    return "香港宽频网络" 
    }
-   else if(para=="ALICLOUD-HK")
-   {
+   else if(para=="ALICLOUD-HK")   {
    return "香港阿里云"
    }
-   else if(para.indexOf("Tencent")>-1)
-   {
+   else if(para.indexOf("Tencent")>-1)   {
    return "腾讯云服务"
    }
-   else if(para=="HGC Global Communications Limited")
-   {
+   else if(para=="HGC Global Communications Limited")   {
    return "和记环球电讯"
    }
-   else if(para=="Eons Data Communications Limited")
-   {
+   else if(para=="Eons Data Communications Limited")   {
    return "Eons数据通讯"
    }
-   else if(para.indexOf("UCloud Information Technology") > -1 )
-   {
+   else if(para.indexOf("UCloud Information Technology") > -1 )   {
    return "UCloud信息科技"
    }
-  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )
-   {
+  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )   {
    return "VirMach"
    }
-   else if(para=="Quicksilver Express Courier, Inc.")
-   {
+   else if(para=="Quicksilver Express Courier, Inc.")   {
    return "快银快递"
    }
-   else if(para=="Oracle Corporation")
-   {
+   else if(para=="Oracle Corporation")   {
    return "甲骨文云服务"
    }
-   else if(para.indexOf("Oracle Public Cloud")>-1)
-   {
+   else if(para.indexOf("Oracle Public Cloud")>-1)   {
    para = para.replace("Oracle Public Cloud","甲骨文云服务")
    return para
    }
