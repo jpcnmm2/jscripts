@@ -73,8 +73,11 @@ $task.fetch(myRequest).then(response => {
    else if(para.indexOf("UCLOUD INFORMATION TECHNOLOGY") > -1 )   {
    return "UCloud信息科技"
    }
-  else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )   {
+   else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )   {
    return "VirMach"
+   }
+   else if(para.indexOf("Globaldata Investments Inc") > -1 )   {
+   return "Globaldata"
    }
    else if (para=="Oracle Corporation")   {
    return "甲骨文公司" 
@@ -131,6 +134,12 @@ $task.fetch(myRequest).then(response => {
   else if(regionName=="Shatin"){
    return "沙田"
    }
+  else if(regionName=="Sai Kung District"){
+   return "西贡区"
+   }
+  else if(regionName=="Tseung Kwan O"){
+   return "将军澳"
+  }
   else if(regionName=="Tai Wai"){
    return "大围村"
    }
@@ -245,8 +254,11 @@ $task.fetch(myRequest).then(response => {
    else if(para.indexOf("UCLOUD INFORMATION TECHNOLOGY") > -1 )   {
    return "UCloud信息科技"
    }
-  else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )    {
+   else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )    {
    return "VirMach"
+   }
+   else if(para.indexOf("Globaldata Investments Inc") > -1 )   {
+   return "Globaldata"
    }
    else if(para=="Quicksilver Express Courier, Inc.")   {
    return "快银快递"
