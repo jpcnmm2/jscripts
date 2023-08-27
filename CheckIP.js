@@ -67,6 +67,18 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Taiwan Fixed Network")   {
    return "台湾固网股份有限公司" 
    }
+   else if(para=="Eons Data Communications Limited")
+   {
+   return "Eons数据通讯"
+   }
+   else if(para.indexOf("UCloud Information Technology") > -1 )
+   {
+   return "UCloud信息科技"
+   }
+  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )
+   {
+   return "VirMach"
+   }
    else if (para=="Oracle Corporation")   {
    return "甲骨文公司" 
    }
@@ -168,9 +180,13 @@ $task.fetch(myRequest).then(response => {
     para = para.replace("AWS","亚马逊云服务")
     return para
    }
-   if(para=="Microsoft Azure Cloud (eastasia)"){
-   return "微软云服务"
+   if(para.indexOf("Microsoft Azure Cloud")){
+    para = para.replace("Microsoft Azure Cloud","微软云服务")
+    return "微软云服务"
    } 
+   else if(para=="Microsoft  Corporation"){
+   return "微软云服务" 
+   }
    else if(para=="Chunghwa Telecom Co. Ltd."){
    return "中华电信" 
    }
@@ -230,6 +246,18 @@ $task.fetch(myRequest).then(response => {
    {
    return "和记环球电讯"
    }
+   else if(para=="Eons Data Communications Limited")
+   {
+   return "Eons数据通讯"
+   }
+   else if(para.indexOf("UCloud Information Technology") > -1 )
+   {
+   return "UCloud信息科技"
+   }
+  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )
+   {
+   return "VirMach"
+   }
    else if(para=="Quicksilver Express Courier, Inc.")
    {
    return "快银快递"
@@ -260,7 +288,11 @@ $task.fetch(myRequest).then(response => {
  var body = $response.body;
  var obj = JSON.parse(body);
  var title = flags.get(obj['countryCode'])+' '+ City_ValidCheck(obj['city']);
-var subtitle = Org_ValidCheck(obj['isp']) + " ➠ "+ obj['country'];
+if  (obj['org'] == "") { 
+  var subtitle = Org_ValidCheck(obj['isp']) + " ➠ "+ obj['country']; }
+else {
+  var subtitle = Org_ValidCheck(obj['org']) + " ➠ "+ obj['country']; }
+}
 var ip = obj['query'];
 /*
 var description = '服务商:'+ISP_ValidCheck(obj['isp']) +'\n'+'DNS:'+ obj['reverse'] +'\n'+'地区:' +City_ValidCheck(obj['regionName'])+obj['district']+'\n' +'洲际:'+obj['continent'] +'\n'+'IP:'+obj['query'] +'\n' +'托管:'+ obj['hosting'];
