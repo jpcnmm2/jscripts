@@ -248,7 +248,7 @@ $task.fetch(myRequest).then(response => {
    else if(para.indexOf("UCloud Information Technology") > -1 )   {
    return "UCloud信息科技"
    }
-  else if(para.indexOf("Virtual Machine Solutions LLC) > -1 )   {
+  else if(para.indexOf("Virtual Machine Solutions LLC") > -1 )    {
    return "VirMach"
    }
    else if(para=="Quicksilver Express Courier, Inc.")   {
