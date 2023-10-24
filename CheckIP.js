@@ -250,7 +250,7 @@ $task.fetch(myRequest).then(response => {
   else if(regionName=="Tseung Kwan O"){
    return "将军澳"
   }
-  else if(regionName.indexOf("Tsuen Wan")) { return "将军澳" }
+  else if(regionName.indexOf("Tsuen Wan") > -1 ) { return "将军澳" }
   else if(regionName=="Tai Wai"){
    return "大围村"
    }
