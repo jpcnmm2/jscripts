@@ -48,6 +48,9 @@ $task.fetch(myRequest).then(response => {
    para = para.replace("Oracle Cloud Infrastructure","甲骨文云服务")
    return para
    }
+   if(para=="Amazon.com, Inc."){
+   return "亚马逊云服务" 
+   }
    if(para.indexOf("AWS")>-1){
     para = para.replace("AWS","亚马逊云服务")
     return para
