@@ -68,7 +68,7 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Alibaba.com LLC"){
    return "阿里云服务" 
    }
-   else if(para.indexOf("Hong Kong Telecommunications (HKT)") >-1 ){
+   else if(para.indexOf("Hong Kong Telecommunications")>-1){
    return "香港电讯有限公司（HKT）" 
    }
    else if(para.indexOf("PCCW IMS")>-1){
@@ -310,7 +310,7 @@ $task.fetch(myRequest).then(response => {
    else if(para=="Alibaba.com LLC"){
    return "阿里云服务" 
    }
-   else if(para.indexOf("Hong Kong Telecommunications (HKT) Limited") >-1 ){
+   else if(para.indexOf("Hong Kong Telecommunications") >-1 ){
    return "香港电讯有限公司（HKT）" 
    }
    else if(para=="DigitalOcean, LLC"){
