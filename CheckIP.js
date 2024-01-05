@@ -69,7 +69,7 @@ $task.fetch(myRequest).then(response => {
    return "阿里云服务" 
    }
    else if(para=="Hong Kong Telecommunications (HKT) Limited"){
-   return "香港电讯有限公司" 
+   return "香港电讯有限公司（HKT）" 
    }
    else if(para=="DigitalOcean, LLC"){
    return "数字海洋" 
@@ -106,7 +106,7 @@ $task.fetch(myRequest).then(response => {
    return "RESNET住宅网络解决方案" 
    }
    else if(para=="Hong Kong Broadband Network Ltd")   {
-   return "香港宽频网络" 
+   return "香港宽频网络（HKBN）" 
    }
    else if(para=="ALICLOUD-HK")   {
    return "香港阿里云"
@@ -162,7 +162,7 @@ $task.fetch(myRequest).then(response => {
    return "阿里云服务" 
    }
    else if(para=="Hong Kong Telecommunications (HKT) Limited"){
-   return "香港电讯有限公司" 
+   return "香港电讯有限公司（HKT）" 
    }
    else if(para=="DigitalOcean, LLC"){
    return "数字海洋有限公司" 
@@ -314,7 +314,7 @@ $task.fetch(myRequest).then(response => {
    return "阿里云服务" 
    }
    else if(para=="Hong Kong Telecommunications (HKT) Limited"){
-   return "香港电讯有限公司" 
+   return "香港电讯有限公司（HKT）" 
    }
    else if(para=="DigitalOcean, LLC"){
    return "数字海洋" 
@@ -351,7 +351,7 @@ $task.fetch(myRequest).then(response => {
    return "RESNET住宅网络解决方案" 
    }
    else if(para=="Hong Kong Broadband Network Ltd")   {
-   return "香港宽频网络" 
+   return "香港宽频网络（HKBN）" 
    }
    else if(para=="ALICLOUD-HK")   {
    return "香港阿里云"
