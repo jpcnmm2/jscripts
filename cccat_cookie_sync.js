@@ -76,15 +76,15 @@ async function getScriptUrl() {
   await $.ql.initial();
 
   const response = await $.ql.select('CCCAT_COOKIE');
-  console.log(response.data);
+  //console.log(response.data);
   //const delIds = response.data.map((item) => item.id);
   //await $.ql.delete(delIds);
   //console.log(`=======================清空环境变量=======================`);
  
-  const id = response.data.id;
+  const id = response.data[0].id;
   console.log(id);
   const CCCAT_cookie = [{"id":id, "name":"CCCAT_COOKIE", "value":cookie}]
-  console.log(CCCAT_cookie);
+  //console.log(CCCAT_cookie);
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2.data);
   console.log(`=======================更新环境变量=======================`);
