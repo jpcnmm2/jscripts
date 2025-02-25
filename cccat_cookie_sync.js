@@ -48,7 +48,7 @@ hostname = %APPEND% cccat.io
 */
 
 //获取cookie
-let cookie = $request.headers['Cookie'] || $request.headers['cookie'];
+const cookie = $request.headers['Cookie'] || $request.headers['cookie'];
 console.log(`获取的Cookie: ${cookie}`);
 
 
@@ -82,7 +82,9 @@ async function getScriptUrl() {
   //console.log(`=======================清空环境变量=======================`);
  
   const id = response.data.id;
+  console.log(id);
   const CCCAT_cookie = [{"id":id, "name":"CCCAT_COOKIE", "value":cookie}]
+  console.log(CCCAT_cookie);
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2.data);
   console.log(`=======================更新环境变量=======================`);
