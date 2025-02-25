@@ -84,7 +84,7 @@ async function getScriptUrl() {
   const id = response.data[0].id;
   console.log(id);
   const CCCAT_cookie = [{"id":id, "name":"CCCAT_COOKIE", "value":cookie}]
-  //console.log(CCCAT_cookie);
+  console.log(CCCAT_cookie);
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2.data);
   console.log(`=======================更新环境变量=======================`);
