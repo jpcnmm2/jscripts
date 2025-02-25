@@ -76,7 +76,7 @@ async function getScriptUrl() {
   await $.ql.initial();
 
   const response = await $.ql.select('CCCAT_COOKIE');
-  //console.log(response.data);
+  console.log(response.data);
   //const delIds = response.data.map((item) => item.id);
   //await $.ql.delete(delIds);
   //console.log(`=======================清空环境变量=======================`);
