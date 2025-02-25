@@ -1,7 +1,7 @@
 /**
  * 自动更新CCCAT_Cookie
 
-名称:CCCAT_Cookie同步到青龙面板
+名称:CCCAT_Cookie更新到青龙面板
 描述:自动更新CCCAT_Cookie
 作者:@Lxi0707
 支持:Quantumult-X surge loon
@@ -59,7 +59,7 @@ console.log(`获取的Cookie: ${cookie}`);
 
 const $ = new API("ql", true);
 
-const title = "🐯Cookie";
+const title = "🐯Cookie更新到青龙";
 
 //const jd_cookies = JSON.parse($.read("#CookiesJD") || "[]");
 
@@ -86,13 +86,17 @@ async function getScriptUrl() {
   const CCCAT_cookie = [{"name":"CCCAT_COOKIE", "value":cookie}]
   const response2 = await $.ql.add(CCCAT_cookie);
   //console.log(response2.data);
-  console.log(`=======================更新环境变量=======================`);
-  
-  return $.notify(title, '更新成功！🎉', ``);  
+  if (response2.status == 200) {
+  console.log(`=======================更新环境变量=======================`);  
+  return $.notify(title, '更新成功🎉', ``);
+ } else {
+  return $.notify(title, "更新失败❌，请重试！", "");
+ } 
 
 })()
   .catch((e) => {
     $.log(JSON.stringify(e));
+    return $.notify(title, "更新失败❌，请查看日志！", "");
   })
   .finally(() => {
     $.done();
