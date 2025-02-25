@@ -1,7 +1,7 @@
 /**
  * 自动更新CCCAT_Cookie
 
-名称:自动更新CCCAT_Cookie到青龙面板
+名称:CCCAT_Cookie同步到青龙面板
 描述:自动更新CCCAT_Cookie
 作者:@Lxi0707
 支持:Quantumult-X surge loon
@@ -51,7 +51,6 @@ hostname = %APPEND% cccat.io
 let cookie = $request.headers['Cookie'] || $request.headers['cookie'];
 console.log(`获取的Cookie: ${cookie}`);
 
-const CCCAT_cookie = [{"name":"CCCAT_COOKIE", "value":cookie}]
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -60,7 +59,7 @@ const CCCAT_cookie = [{"name":"CCCAT_COOKIE", "value":cookie}]
 
 const $ = new API("ql", true);
 
-const title = "🐯青龙Cookie";
+const title = "🐯Cookie";
 
 //const jd_cookies = JSON.parse($.read("#CookiesJD") || "[]");
 
@@ -77,11 +76,14 @@ async function getScriptUrl() {
   await $.ql.initial();
 
   const response = await $.ql.select('CCCAT_COOKIE');
-  const delIds = response.data.map((item) => item.id);
-  await $.ql.delete(delIds);
-  console.log(`=======================清空环境变量=======================`);
-
-  await $.ql.add(CCCAT_cookie);
+  console.log(response.data);
+  //const delIds = response.data.map((item) => item.id);
+  //await $.ql.delete(delIds);
+  //console.log(`=======================清空环境变量=======================`);
+ 
+  const id = response.data.id;
+  const CCCAT_cookie = [{"id":id, "name":"CCCAT_COOKIE", "value":cookie}]
+  await $.ql.edit(CCCAT_cookie);
   console.log(`=======================更新环境变量=======================`);
   
   return $.notify(title, '更新成功！🎉', ``);
