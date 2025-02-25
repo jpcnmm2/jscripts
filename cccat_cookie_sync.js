@@ -60,7 +60,7 @@ const CCCAT_cookie = [{"name":"CCCAT_COOKIE", "value":cookie}]
 
 const $ = new API("ql", true);
 
-const title = "🐯Cookie更新成功！🎉";
+const title = "🐯青龙Cookie";
 
 //const jd_cookies = JSON.parse($.read("#CookiesJD") || "[]");
 
@@ -84,7 +84,7 @@ async function getScriptUrl() {
   await $.ql.add(CCCAT_cookie);
   console.log(`=======================更新环境变量=======================`);
   
-  return $.notify(title, '更新成功！', ``);
+  return $.notify(title, '更新成功！🎉', ``);
   
 
 })()
