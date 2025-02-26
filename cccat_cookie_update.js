@@ -1,5 +1,6 @@
 /**
  * 自动更新CCCAT_Cookie
+ * 使用edit命令，要使用json格式，不能使用数组。
 
 名称:CCCAT_Cookie更新到青龙面板
 描述:自动更新CCCAT_Cookie
@@ -64,13 +65,13 @@ async function getScriptUrl() {
   //const delIds = response.data.map((item) => item.id);
   //await $.ql.delete(delIds);
   //console.log(`=======================清空环境变量=======================`);
-  const Ids = response.data[0].id;
+  const id = response.data[0].id;
   //console.log(Ids);
-  const CCCAT_cookie = {"name":"CCCAT_COOKIE", "value":cookie, "id":Ids,"remarks":""}
+  const CCCAT_cookie = {"name":"CCCAT_COOKIE", "value":cookie, "id":id,"remarks":""}
   console.log(CCCAT_cookie);
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2);
-  if (response2.status == 200) {
+  if (response2.code == 200) {
   console.log(`=======================更新环境变量=======================`);  
   return $.notify(title, '更新成功🎉', ``);
  } else {
@@ -85,7 +86,6 @@ async function getScriptUrl() {
   .finally(() => {
     $.done();
   });
-
 
 /* prettier-ignore */
 function ENV(){const isJSBox=typeof require=="function"&&typeof $jsbox!="undefined";return{isQX:typeof $task!=="undefined",isLoon:typeof $loon!=="undefined",isSurge:typeof $httpClient!=="undefined"&&typeof $utils!=="undefined",isBrowser:typeof document!=="undefined",isNode:typeof require=="function"&&!isJSBox,isJSBox,isRequest:typeof $request!=="undefined",isScriptable:typeof importModule!=="undefined",isShadowrocket:"undefined"!==typeof $rocket,isStash:"undefined"!==typeof $environment&&$environment["stash-version"]}}
