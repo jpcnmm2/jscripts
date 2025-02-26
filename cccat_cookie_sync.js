@@ -1,5 +1,5 @@
 /**
- * 自动更新CCCAT_Cookie
+ * 自动更新CCCAT_Cookie，通过add命令，使用数组格式。
 
 名称:CCCAT_Cookie更新到青龙面板
 描述:自动更新CCCAT_Cookie
