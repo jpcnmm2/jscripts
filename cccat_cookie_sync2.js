@@ -67,7 +67,7 @@ async function getScriptUrl() {
   const Ids = response.data[0].id;
   //console.log(Ids);
   const CCCAT_cookie = [{"name":"CCCAT_COOKIE", "value":cookie, "id":Ids,"remarks":""}]
-  console.log("CCCAT_cookie: " + CCCAT_cookie);
+  console.log(CCCAT_cookie);
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2);
   if (response2.status == 200) {
