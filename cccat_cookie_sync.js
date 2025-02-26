@@ -5,23 +5,9 @@
 描述:自动更新CCCAT_Cookie
 作者:@Lxi0707
 支持:Quantumult-X surge loon
-更新日志:
-2024.10.29修改脚本一直处于运行状态，添加多账号获取
-2024.10.30添加ck在日志显示,surge,loon适配
-
-脚本说明:获取新ck切换账号后，退后台重进秒通知，通知内包含cookie,cookie信息自行复制使用。
 
 TG频道:https://t.me/LXi_Collection_hall
 TG群聊:https://t.me/LxiCollectionhallChat
-
-脚本声明:：
- 1. 本脚本仅用于学习研究，禁止用于商业用途。
- 2. 本脚本不保证准确性、可靠性、完整性和及时性。
- 3. 任何人或组织可自由使用，无需通知。
- 4. 作者不对使用本脚本产生的任何损失或问题负责。
- 5. 如认为脚本侵犯权益，请提供身份证明与所有权证明，我将在确认后删除相关内容。
- 6. 请勿将本脚本用于商业用途，后果自负。
- 7. 本脚本版权归作者所有。
 
 ===================|调试区|====================
 
@@ -29,7 +15,6 @@ TG群聊:https://t.me/LxiCollectionhallChat
 
 [rewrite_local]
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://raw.githubusercontent.com/Lxi0707/Scripts/refs/heads/X/pt_key.js
-
 
 #Surge
 #!name=JD-Cookie
@@ -42,7 +27,6 @@ JD-Cookie = type=http-request, pattern=^https?:\/\/api\.m\.jd\.com\/client\.acti
 
 http-request ^https?:\/\/cccat\.io\/user\/index\.php script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/cccat_cookie_sync.js
 
-
 [MITM]
 hostname = %APPEND% cccat.io
 */
@@ -50,7 +34,6 @@ hostname = %APPEND% cccat.io
 //获取cookie
 const cookie = $request.headers['Cookie'] || $request.headers['cookie'];
 console.log(`获取的Cookie: ${cookie}`);
-
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
