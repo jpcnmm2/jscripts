@@ -49,7 +49,7 @@ const title = "🐯Cookie更新到青龙";
 
 async function getScriptUrl() {
   const response = await $.http.get({
-    url: "https://raw.githubusercontent.com/dompling/Script/master/jd/ql_api.js",
+    url: "https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/ql_openapi.js",
   });
   return response.body;
 }
