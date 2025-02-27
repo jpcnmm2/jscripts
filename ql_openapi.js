@@ -8,7 +8,7 @@ $.ql_url = $.ql_config.ip;
 $.log(`地址：${$.ql_url}`);
 
 $.ql = {
-  type: "openapi",
+  type: "api",
   headers: {
     "Content-Type": `application/json;charset=UTF-8`,
     Authorization: "",
@@ -66,7 +66,7 @@ $.ql = {
     };
     return $.http.get(opt).then((response) => JSON.parse(response.body));
   },
-   selectTask(searchValue = "✈️机场签到") {
+   selectTask(searchValue = "机场签到") {
     if (!this.headers.Authorization) return;
     const opt = {
       url: `${$.ql_url}/${this.type}/crons?searchValue=${searchValue}`,
