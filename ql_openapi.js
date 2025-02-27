@@ -66,7 +66,7 @@ $.ql = {
     };
     return $.http.get(opt).then((response) => JSON.parse(response.body));
   },
-   selectTask(searchValue = "机场签到") {
+   selectTask(searchValue = "autocheckin") {
     if (!this.headers.Authorization) return;
     const opt = {
       url: `${$.ql_url}/${this.type}/crons?searchValue=${searchValue}`,
