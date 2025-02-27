@@ -73,7 +73,7 @@ async function getScriptUrl() {
   console.log(response2);
   if (response2.code == 200) {
   console.log(`=======================更新环境变量=======================`);
-  const rescron = await $.ql.selectTask('✈️机场签到');
+  const rescron = await $.ql.selectTask('机场签到');
   console.log("任务查询结果：");
   console.log(rescron);
   const taskIDs = [];
