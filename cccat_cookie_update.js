@@ -35,7 +35,7 @@ hostname = %APPEND% cccat.io
 
 //获取cookie
 const cookie = $request.headers['Cookie'] || $request.headers['cookie'];
-console.log(`获取的Cookie: ${cookie}`);
+//console.log(`获取的Cookie: ${cookie}`);
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -61,26 +61,25 @@ async function getScriptUrl() {
   await $.ql.initial();
 
   const response = await $.ql.select('CCCAT_COOKIE');
-  //console.log(response.data);
-  //const delIds = response.data.map((item) => item.id);
-  //await $.ql.delete(delIds);
-  //console.log(`=======================清空环境变量=======================`);
+  console.log(`=======================查询环境变量=======================`);
   const id = response.data[0].id;
-  //console.log(Ids);
+
+  
   const CCCAT_cookie = {"name":"CCCAT_COOKIE", "value":cookie, "id":id,"remarks":""}
-  //console.log(CCCAT_cookie);
-  const response2 = await $.ql.edit(CCCAT_cookie);
-  console.log(response2);
-  if (response2.code == 200) {
+  //console.log(CCCAT_cookie); 
+  const responseadd = await $.ql.edit(CCCAT_cookie);
   console.log(`=======================更新环境变量=======================`);
+  console.log(responseadd);
+  
+  if (responseadd.code == 200) {  
   const rescron = await $.ql.selectTask('autocheckin');
   console.log("任务查询结果：");
   console.log(rescron);
-  //const taskIDs = [];
-  //taskIDs[0] = rescron.data.data[0].id;
+    
   const taskIDs = rescron.data.data.map((item) => item.id);
   console.log("任务列表：");
   console.log(taskIDs);
+    
   const resrun =  await $.ql.runTask(taskIDs);
   console.log("执行响应：")
   console.log(resrun)
