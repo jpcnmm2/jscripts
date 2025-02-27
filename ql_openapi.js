@@ -66,6 +66,23 @@ $.ql = {
     };
     return $.http.get(opt).then((response) => JSON.parse(response.body));
   },
+   selectTask(searchValue = "✈️机场签到") {
+    if (!this.headers.Authorization) return;
+    const opt = {
+      url: `${$.ql_url}/${this.type}/crons?searchValue=${searchValue}`,
+      headers: this.headers,
+    };
+    return $.http.get(opt).then((response) => JSON.parse(response.body));
+  },
+   runTask(ids) {
+    if (!this.headers.Authorization) return;
+    const opt = {
+      url: `${$.ql_url}/${this.type}/crons/run`,
+      headers: this.headers,
+      data: JSON.stringify(ids),
+    };
+    return $.http.put(opt).then((response) => JSON.parse(response.body));
+  },
   initial: async () => {
     if ($.ql_url && !$.ql_url.match(/^(http|https)/))
       $.ql_url = `http://${$.ql_url}`;
