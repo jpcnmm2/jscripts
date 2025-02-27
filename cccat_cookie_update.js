@@ -76,8 +76,9 @@ async function getScriptUrl() {
   const rescron = await $.ql.selectTask('autocheckin');
   console.log("任务查询结果：");
   console.log(rescron);
-  const taskIDs = [];
-  taskIDs[0] = rescron.data.data[0].id;
+  //const taskIDs = [];
+  //taskIDs[0] = rescron.data.data[0].id;
+  const taskIDs = rescron.data.map((item) => item.id);
   console.log("任务列表：");
   console.log(taskIDs);
   const resrun =  await $.ql.runTask(taskIDs);
