@@ -78,6 +78,7 @@ async function getScriptUrl() {
   console.log(rescron);
   const taskIDs = [];
   taskIDs[0] = rescron.data.data[0].id;
+  console.log(taskIDs);
   const resrun =  await $.ql.runTask(taskIDs);
   console.log("执行响应：")
   console.log(resrun)
