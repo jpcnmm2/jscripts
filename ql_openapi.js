@@ -79,7 +79,7 @@ $.ql = {
     const opt = {
       url: `${$.ql_url}/${this.type}/crons/run`,
       headers: this.headers,
-      data: JSON.stringify(ids),
+      body: JSON.stringify(ids),
     };
     return $.http.put(opt).then((response) => JSON.parse(response.body));
   },
