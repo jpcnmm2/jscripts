@@ -72,7 +72,15 @@ async function getScriptUrl() {
   const response2 = await $.ql.edit(CCCAT_cookie);
   console.log(response2);
   if (response2.code == 200) {
-  console.log(`=======================更新环境变量=======================`);  
+  console.log(`=======================更新环境变量=======================`);
+  const rescron = await $.ql.selectTask('✈️机场签到');
+  console.log("任务查询结果：");
+  console.log(rescron);
+  const taskIDs = [];
+  taskIDs[0] = rescron.data.data[0].id;
+  const resrun =  await $.ql.runTask(taskIDs);
+  console.log("执行响应：")
+  console.log(resrun)
   return $.notify(title, '更新成功🎉', ``);
  } else {
   return $.notify(title, "更新失败❌，请重试！", "");
