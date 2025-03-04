@@ -34,6 +34,7 @@ cookie格式
 {"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"}
 {"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"} 此处roleID是camproleid
 */
+
 //获取header和body
 const appid = $request.headers['appid'];
 const openid = $request.headers['openid'];
@@ -68,6 +69,10 @@ async function getScriptUrl() {
 }
 
 (async () => {
+  //如果参数不全，不进行后续操作；
+  if (msdkEncodeParam === null || msdkEncodeParam === undefined) {
+   return;
+  }
   const ql_script = (await getScriptUrl()) || "";
   eval(ql_script);
   await $.ql.initial();
