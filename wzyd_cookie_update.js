@@ -43,11 +43,11 @@ const userId = $request.headers['userId'];
 const source = $request.headers['source'];
 const timestamp = $request.headers['timestamp'];
 const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
-//console.log(`获取的header: ${wzyd_header}`);
+console.log(`获取的header: ${header}`);
 
 const roleId = $request.headers['roleId'];
 const body = {"cSystem":"ios","h5Get":1,"roleId":roleId};
-//console.log(`获取的body: ${wzyd_body}`);
+console.log(`获取的body: ${body}`);
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
