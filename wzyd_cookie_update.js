@@ -35,20 +35,19 @@ cookie格式
 {"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"}
 */
 //获取header和body
-console.log($request.headers);
 const appid = $request.headers['appid'];
 const openid = $request.headers['openid'];
-const msdkEncodeParam = $request.headers['msdkEncodeParam'];
+const msdkEncodeParam = $request.headers['msdkencodeparam'];
 const sig = $request.headers['sig'];
-const userId = $request.headers['userId'];
+const userId = $request.headers['userid'];
 const source = $request.headers['source'];
 const timestamp = $request.headers['timestamp'];
 const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
-console.log(header);
+console.log(JSON.parse(header));
 
-const roleId = $request.headers['roleId'];
+const roleId = $request.headers['roleid'];
 const body = {"cSystem":"ios","h5Get":1,"roleId":roleId};
-console.log(body);
+console.log(JSON.parse(body));
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -79,7 +78,7 @@ async function getScriptUrl() {
   const response2 = await $.ql.select('WZYD_BODY');
   const body_id = response2.data[0].id;
   
-  const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.stringify(header), "id":token_id,"remarks":""}
+  const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.parse(header), "id":token_id,"remarks":""}
   const wzyd_body = {"name":"WZYD_BODY", "value":JSON.parse(body), "id":body_id,"remarks":""}
   console.log(wzyd_token); 
   console.log(wzyd_body); 
