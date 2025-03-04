@@ -78,7 +78,7 @@ async function getScriptUrl() {
   response = await $.ql.select('WZYD_BODY');
   const body_id = response.data[0].id;
   
-  const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.parse(header), "id":token_id,"remarks":""}
+  const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.stringify(header), "id":token_id,"remarks":""}
   const wzyd_body = {"name":"WZYD_BODY", "value":JSON.parse(body), "id":body_id,"remarks":""}
   //console.log(wzyd_token); 
   //console.log(wzyd_body); 
