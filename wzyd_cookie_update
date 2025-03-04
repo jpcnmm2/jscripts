@@ -89,7 +89,7 @@ async function getScriptUrl() {
   console.log(responseedit2);
   
   if ((responseedit.code == 200) && (responseedit2.code == 200)) {  
-  const rescron = await $.ql.selectTask('kohcamp_sign');
+  const rescron = await $.ql.selectTask('wzyd_sign');
   //console.log(`任务查询结果：${rescron}`);
   //console.log(rescron);
 
