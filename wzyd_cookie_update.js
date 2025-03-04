@@ -32,7 +32,7 @@ hostname = %APPEND% kohcamp.qq.com
 /*
 cookie格式
 {"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"}
-{"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"}
+{"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"} 此处roleID是camproleid
 */
 //获取header和body
 const appid = $request.headers['appid'];
@@ -45,8 +45,8 @@ const timestamp = $request.headers['timestamp'];
 const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
 
-const roleId = $request.headers['roleid'];
-const body = {"cSystem":"ios","h5Get":1,"roleId":roleId};
+const camproleid = $request.headers['camproleid'];
+const body = {"cSystem":"ios","h5Get":1,"roleId":camproleid};
 //console.log(body);
 
 /*
