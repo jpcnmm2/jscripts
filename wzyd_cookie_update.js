@@ -35,6 +35,7 @@ cookie格式
 {"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"}
 */
 //获取header和body
+console.log($request.headers);
 const appid = $request.headers['appid'];
 const openid = $request.headers['openid'];
 const msdkEncodeParam = $request.headers['msdkEncodeParam'];
