@@ -43,11 +43,11 @@ const userId = $request.headers['userId'];
 const source = $request.headers['source'];
 const timestamp = $request.headers['timestamp'];
 const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
-console.log(`获取的header: ${header}`);
+console.log(header);
 
 const roleId = $request.headers['roleId'];
 const body = {"cSystem":"ios","h5Get":1,"roleId":roleId};
-console.log(`获取的body: ${body}`);
+console.log(body);
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -73,15 +73,15 @@ async function getScriptUrl() {
   await $.ql.initial();
 
   console.log(`=======================查询环境变量=======================`);
-  let response = await $.ql.select('WZYD_TOKEN');
+  const response = await $.ql.select('WZYD_TOKEN');
   const token_id = response.data[0].id;
-  response = await $.ql.select('WZYD_BODY');
-  const body_id = response.data[0].id;
+  const response2 = await $.ql.select('WZYD_BODY');
+  const body_id = response2.data[0].id;
   
   const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.stringify(header), "id":token_id,"remarks":""}
   const wzyd_body = {"name":"WZYD_BODY", "value":JSON.parse(body), "id":body_id,"remarks":""}
-  //console.log(wzyd_token); 
-  //console.log(wzyd_body); 
+  console.log(wzyd_token); 
+  console.log(wzyd_body); 
   console.log(`=======================更新环境变量=======================`);
   const responseedit = await $.ql.edit(wzyd_token);
   console.log(responseedit);
