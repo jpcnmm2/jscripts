@@ -27,7 +27,7 @@ JD-Cookie = type=http-request, pattern=^https?:\/\/api\.m\.jd\.com\/client\.acti
 
 #Loon
 
-http-request ^https?:\/\/cccat\.io\/user\/index\.php script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/cccat_cookie_sync.js
+http-request ^https?:\/\/cccat\.io\/user\/index\.php script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/cccat_cookie_update.js
 
 [MITM]
 hostname = %APPEND% cccat.io
