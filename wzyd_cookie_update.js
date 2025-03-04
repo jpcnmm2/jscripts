@@ -43,11 +43,11 @@ const userId = $request.headers['userid'];
 const source = $request.headers['source'];
 const timestamp = $request.headers['timestamp'];
 const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
-console.log(JSON.stringify(header));
+//console.log(header);
 
 const roleId = $request.headers['roleid'];
 const body = {"cSystem":"ios","h5Get":1,"roleId":roleId};
-console.log(JSON.stringify(body));
+//console.log(body);
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -80,8 +80,8 @@ async function getScriptUrl() {
   
   const wzyd_token = {"name":"WZYD_TOKEN", "value":JSON.stringify(header), "id":token_id,"remarks":""}
   const wzyd_body = {"name":"WZYD_BODY", "value":JSON.stringify(body), "id":body_id,"remarks":""}
-  console.log(wzyd_token); 
-  console.log(wzyd_body); 
+  //console.log(wzyd_token); 
+  //console.log(wzyd_body); 
   console.log(`=======================更新环境变量=======================`);
   const responseedit = await $.ql.edit(wzyd_token);
   console.log(responseedit);
