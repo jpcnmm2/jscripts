@@ -5,7 +5,7 @@ ios151 密钥来源@三岁
 
 [rewrite_local]
 
-https://sjb-api.aizuoye100.com/api/v2/application/get_user url script-response-body https://raw.githubusercontent.com/jpcnmm/jscripts/main/Shijuanbao.js
+https://sjb-api.aizuoye100.com/api/v2/application/get_user url script-response-body https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/Shijuanbao.js
 
 
 [mitm]
