@@ -23,7 +23,9 @@ JD-Cookie = type=http-request, pattern=^https?:\/\/api\.m\.jd\.com\/client\.acti
 
 #Loon
 
-http-request ^https?:\/\/kohcamp\.qq\.com\/operation\/action\/signinfo script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/wzyd_cookie_update.js
+# http-request ^https?:\/\/kohcamp\.qq\.com\/operation\/action\/signinfo script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/wzyd_cookie_update.js
+http-request ^https?:\/\/kohcamp\.qq\.com\/operation\/action\/newsignin script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/wzyd_cookie_update.js
+
 
 [MITM]
 hostname = %APPEND% kohcamp.qq.com
