@@ -33,19 +33,23 @@ hostname = %APPEND% kohcamp.qq.com
 
 /*
 cookie格式
-{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"}
+// {"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"}
+
+{"appid": "","openid": "","token": "","userId": "","source": "","encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","token": "","userId": "","source": "","encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"}
 {"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"} 此处roleID是camproleid
 */
 
 //获取header和body
 const appid = $request.headers['appid'];
 const openid = $request.headers['openid'];
-const msdkEncodeParam = $request.headers['msdkencodeparam'];
-const sig = $request.headers['sig'];
+//const msdkEncodeParam = $request.headers['msdkencodeparam'];
+//const sig = $request.headers['sig'];
+const token = $request.headers['token'];
 const userId = $request.headers['userid'];
 const source = $request.headers['source'];
-const timestamp = $request.headers['timestamp'];
-const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
+//const timestamp = $request.headers['timestamp'];
+//const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
+const header = {"appid": appid,"openid": openid,"token": token,"userId": userId,"source": source,"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
 
 const camproleid = $request.headers['camproleid'];
@@ -72,7 +76,7 @@ async function getScriptUrl() {
 
 (async () => {
   //如果参数不全，不进行后续操作；
-  if (msdkEncodeParam === null || msdkEncodeParam === undefined) {
+  if (token === null || token === undefined) {
    return;
   }
   const ql_script = (await getScriptUrl()) || "";
