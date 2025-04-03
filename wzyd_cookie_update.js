@@ -100,17 +100,17 @@ async function getScriptUrl() {
   console.log(responseedit2);
   
   if ((responseedit.code == 200) && (responseedit2.code == 200)) {  
-  const rescron = await $.ql.selectTask('wzyd_sign');
+  //const rescron = await $.ql.selectTask('wzyd_sign');
   //console.log(`任务查询结果：${rescron}`);
   //console.log(rescron);
 
-  const taskIDs = rescron.data.data.map((item) => item.id);
+  //const taskIDs = rescron.data.data.map((item) => item.id);
   //console.log(`任务列表：${taskIDs}`);
   //console.log(taskIDs);
     
-  const resrun =  await $.ql.runTask(taskIDs);
+  //const resrun =  await $.ql.runTask(taskIDs);   //抓取签到请求的cookie，不再重复执行签到
   console.log("执行响应：")
-  console.log(resrun)
+  //console.log(resrun)
   return $.notify(title, '已更新到青龙面板🎉', ``);
  } else {
   return $.notify(title, "更新失败❌，请重试！", "");
