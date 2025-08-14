@@ -128,11 +128,11 @@ function ENV(){
 	  isLoon = () => "Loon" === getEnv(),
 	  isSurge = () => "Surge" === getEnv(),
 	  isBrowser = () => "Browser" === getEnv(),
-	  isNode = () => "Node.js" === getEnv();
+	  isNode = () => "Node.js" === getEnv(),
 	  isRequest = () => "Request" === getEnv(),
 	  isScriptable = () => "Scriptable" === getEnv(),
 	  isStash = () => "Stash" === getEnv(),
-	  isShadowrocket = () => "Shadowrocket" === getEnv(),
+	  isShadowrocket = () => "Shadowrocket" === getEnv();
 	
 	return{isQX,isLoon,isSurge,isBrowser,isNode,isJSBox,isRequest,isScriptable,isShadowrocket,isStash}		
 }
