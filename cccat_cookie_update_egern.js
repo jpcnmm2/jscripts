@@ -1,12 +1,11 @@
 /**
- * 自动更新CCCAT_Cookie
- * 使用edit命令，要使用json格式，不能使用数组。
- * Egern不支持eval函数
-
 名称:CCCAT_Cookie更新到青龙面板
 描述:自动更新CCCAT_Cookie
 作者:@Lxi0707
 支持:Quantumult-X surge loon
+
+* 使用edit命令，要使用json格式，不能使用数组。
+* Egern不支持eval函数
 
 TG频道:https://t.me/LXi_Collection_hall
 TG群聊:https://t.me/LxiCollectionhallChat
