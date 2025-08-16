@@ -1,6 +1,7 @@
 /**
  * 自动更新CCCAT_Cookie
  * 使用edit命令，要使用json格式，不能使用数组。
+ * Egern不支持eval函数
 
 名称:CCCAT_Cookie更新到青龙面板
 描述:自动更新CCCAT_Cookie
@@ -27,7 +28,7 @@ JD-Cookie = type=http-request, pattern=^https?:\/\/api\.m\.jd\.com\/client\.acti
 
 #Loon
 
-http-request ^https?:\/\/cccat\.io\/user\/index\.php script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/cccat_cookie_update.js
+http-request ^https?:\/\/cccat\.io\/user\/index\.php script-path=https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/cccat_cookie_update_egern.js
 
 [MITM]
 hostname = %APPEND% cccat.io
@@ -56,8 +57,148 @@ async function getScriptUrl() {
 }
 
 (async () => {
-  const ql_script = (await getScriptUrl()) || "";
-  eval(ql_script);
+//  const ql_script = (await getScriptUrl()) || "";
+//  eval(ql_script);
+
+	try {
+	  $.ql_config = JSON.parse($.read("#ql"));
+	} catch (e) {
+	  $.ql_config = {};
+	}
+	$.ql_url = $.ql_config.ip;
+	
+	$.log(`地址：${$.ql_url}`);
+	
+	$.ql = {
+	  type: "api",
+	  headers: {
+	    "Content-Type": `application/json;charset=UTF-8`,
+	    Authorization: "",
+	  },
+	  disabled(ids) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs/disable`,
+	      headers: this.headers,
+	      body: JSON.stringify(ids),
+	    };
+	    return $.http.put(opt).then((response) => JSON.parse(response.body));
+	  },
+	  enabled(ids) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs/enable`,
+	      headers: this.headers,
+	      body: JSON.stringify(ids),
+	    };
+	    return $.http.put(opt).then((response) => JSON.parse(response.body));
+	  },
+	  delete(ids) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs`,
+	      headers: this.headers,
+	      body: JSON.stringify(ids),
+	    };
+	    return $.http.delete(opt).then((response) => JSON.parse(response.body));
+	  },
+	  add(records) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs`,
+	      headers: this.headers,
+	      body: JSON.stringify(records),
+	    };
+	    return $.http.post(opt).then((response) => JSON.parse(response.body));
+	  },
+	  edit(records) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs`,
+	      headers: this.headers,
+	      body: JSON.stringify(records),
+	    };
+	    return $.http.put(opt).then((response) => JSON.parse(response.body));
+	  },
+	  select(searchValue = "JD_COOKIE") {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/envs?searchValue=${searchValue}`,
+	      headers: this.headers,
+	    };
+	    return $.http.get(opt).then((response) => JSON.parse(response.body));
+	  },
+	   selectTask(searchValue = "autocheckin") {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/crons?searchValue=${searchValue}`,
+	      headers: this.headers,
+	    };
+	    return $.http.get(opt).then((response) => JSON.parse(response.body));
+	  },
+	   runTask(ids) {
+	    if (!this.headers.Authorization) return;
+	    const opt = {
+	      url: `${$.ql_url}/${this.type}/crons/run`,
+	      headers: this.headers,
+	      body: JSON.stringify(ids),
+	    };
+	    return $.http.put(opt).then((response) => JSON.parse(response.body));
+	  },
+	  initial: async () => {
+	    if ($.ql_url && !$.ql_url.match(/^(http|https)/))
+	      $.ql_url = `http://${$.ql_url}`;
+	
+	    $.application = {
+	      client_id: $.ql_config.client_id,
+	      client_secret: $.ql_config.client_secret,
+	    };
+	
+	    $.ql_account = {
+	      username: $.ql_config.username,
+	      password: $.ql_config.password,
+	    };
+	
+	    if ($.ql_config.is_pwd === "true") {
+	      const options = {
+	        url: `${$.ql_url}/api/user/login`,
+	        body: JSON.stringify($.ql_account),
+	        headers: {
+	          "Content-Type": `application/json;charset=UTF-8`,
+	        },
+	      };
+	      let response = await $.http.post(options);
+	      response = JSON.parse(response.body);
+	      if (response.code === 200) {
+	        $.ql.type = "api";
+	        $.ql.headers.Authorization = `Bearer ${response.data.token}`;
+	        $.log(`登陆成功：${response.data.lastaddr}`);
+	        $.log(`ip:${response.data.lastip}`);
+	      } else {
+	        $.log(response);
+	        $.log(`登陆失败：${response.message}`);
+	      }
+	    } else {
+	      const options = {
+	        url: `${$.ql_url}/open/auth/token?client_id=${$.application.client_id}&client_secret=${$.application.client_secret}`,
+	        headers: {
+	          "Content-Type": `application/json;charset=UTF-8`,
+	        },
+	      };
+	      let response = await $.http.get(options);
+	      response = JSON.parse(response.body);
+	      if (response.code === 200) {
+	        $.ql.type = "open";
+	        $.ql.headers.Authorization = `Bearer ${response.data.token}`;
+	        $.log(`登陆成功`);
+	      } else {
+	        $.log(response);
+	        $.log(`登陆失败：${response.message}`);
+	      }
+	    }
+	  },
+	};	
+	
   await $.ql.initial();
 
   const response = await $.ql.select('CCCAT_COOKIE');
@@ -98,9 +239,9 @@ async function getScriptUrl() {
   });
 
 /* prettier-ignore */
-/* function ENV(){const isJSBox=typeof require=="function"&&typeof $jsbox!="undefined";return{isQX:typeof $task!=="undefined",isLoon:typeof $loon!=="undefined",isSurge:typeof $httpClient!=="undefined"&&typeof $utils!=="undefined",isBrowser:typeof document!=="undefined",isNode:typeof require=="function"&&!isJSBox,isJSBox,isRequest:typeof $request!=="undefined",isScriptable:typeof importModule!=="undefined",isShadowrocket:"undefined"!==typeof $rocket,isStash:"undefined"!==typeof $environment&&$environment["stash-version"]}} */
+function ENV(){const isJSBox=typeof require=="function"&&typeof $jsbox!="undefined";return{isQX:typeof $task!=="undefined",isLoon:typeof $loon!=="undefined",isSurge:typeof $httpClient!=="undefined"&&typeof $utils!=="undefined",isBrowser:typeof document!=="undefined",isNode:typeof require=="function"&&!isJSBox,isJSBox,isRequest:typeof $request!=="undefined",isScriptable:typeof importModule!=="undefined",isShadowrocket:"undefined"!==typeof $rocket,isStash:"undefined"!==typeof $environment&&$environment["stash-version"]}}
 
-function ENV(){
+/* function ENV(){
 	const isJSBox=typeof require=="function"&&typeof $jsbox!="undefined";	
 	const getEnv = () =>
     "undefined" != typeof $environment && $environment["surge-version"]
@@ -135,7 +276,7 @@ function ENV(){
 	  isShadowrocket = () => "Shadowrocket" === getEnv();
 	
 	return{isQX,isLoon,isSurge,isBrowser,isNode,isJSBox,isRequest,isScriptable,isShadowrocket,isStash}		
-}
+} */
 
 /* prettier-ignore */
 function HTTP(defaultOptions={baseURL:""}){const{isQX,isLoon,isSurge,isScriptable,isNode,isBrowser,isShadowrocket,isStash,}=ENV();const methods=["GET","POST","PUT","DELETE","HEAD","OPTIONS","PATCH"];const URL_REGEX=/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;function send(method,options){options=typeof options==="string"?{url:options}:options;const baseURL=defaultOptions.baseURL;if(baseURL&&!URL_REGEX.test(options.url||"")){options.url=baseURL?baseURL+options.url:options.url}if(options.body&&options.headers&&!options.headers["Content-Type"]){options.headers["Content-Type"]="application/x-www-form-urlencoded"}options={...defaultOptions,...options};const timeout=options.timeout;const events={...{onRequest:()=>{},onResponse:(resp)=>resp,onTimeout:()=>{},},...options.events,};events.onRequest(method,options);let worker;if(isQX){worker=$task.fetch({method,...options})}else if(isLoon||isSurge||isNode||isShadowrocket||isStash){worker=new Promise((resolve,reject)=>{const request=isNode?require("request"):$httpClient;request[method.toLowerCase()](options,(err,response,body)=>{if(err)reject(err);else resolve({statusCode:response.status||response.statusCode,headers:response.headers,body,})})})}else if(isScriptable){const request=new Request(options.url);request.method=method;request.headers=options.headers;request.body=options.body;worker=new Promise((resolve,reject)=>{request.loadString().then((body)=>{resolve({statusCode:request.response.statusCode,headers:request.response.headers,body,})}).catch((err)=>reject(err))})}else if(isBrowser){worker=new Promise((resolve,reject)=>{fetch(options.url,{method,headers:options.headers,body:options.body,}).then((response)=>response.json()).then((response)=>resolve({statusCode:response.status,headers:response.headers,body:response.data,})).catch(reject)})}let timeoutid;const timer=timeout?new Promise((_,reject)=>{timeoutid=setTimeout(()=>{events.onTimeout();return reject(`${method}URL:${options.url}exceeds the timeout ${timeout}ms`)},timeout)}):null;return(timer?Promise.race([timer,worker]).then((res)=>{clearTimeout(timeoutid);return res}):worker).then((resp)=>events.onResponse(resp))}const http={};methods.forEach((method)=>(http[method.toLowerCase()]=(options)=>send(method,options)));return http}
