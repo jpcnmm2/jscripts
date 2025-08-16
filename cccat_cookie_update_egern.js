@@ -4,6 +4,7 @@
 作者:@Lxi0707
 支持:Quantumult-X surge loon
 
+* 在BoxJS中设置青龙同步参数
 * 使用edit命令，要使用json格式，不能使用数组。
 * Egern不支持eval函数
 
