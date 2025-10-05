@@ -40,20 +40,27 @@ cookie格式
 */
 
 //获取header和body
-const appid = $request.headers['appid'];
-const openid = $request.headers['openid'];
 //const msdkEncodeParam = $request.headers['msdkencodeparam'];
 //const sig = $request.headers['sig'];
+//const timestamp = $request.headers['timestamp'];
+/*
+const appid = $request.headers['appid'];
+const openid = $request.headers['openid'];
 const token = $request.headers['token'];
 const userId = $request.headers['userid'];
 const source = $request.headers['source'];
-//const timestamp = $request.headers['timestamp'];
+*/
 //const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
-const header = {"appid": appid,"openid": openid,"token": token,"userId": userId,"source": source,"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
+//const header = {"appid": appid,"openid": openid,"token": token,"userId": userId,"source": source,"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
 
-const camproleid = $request.headers['camproleid'];
-const body = {"cSystem":"ios","h5Get":1,"roleId":camproleid};
+const headers = $request.headers
+console.log(headers);
+//获取header和body
+const header = {"appid": headers['appid'],"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"source": headers['source'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
+//console.log(header);
+
+const body = {"cSystem":"ios","h5Get":1,"roleId": headers['camproleid']};
 //console.log(body);
 
 /*
