@@ -59,8 +59,12 @@ console.log(headers);
 //获取header和body
 const header = {"appid": headers['appid'],"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"source": headers['source'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
-
-const body = {"cSystem":"ios","h5Get":1,"roleId": headers['camproleid']};
+if (headers['camproleid'] === null || headers['camproleid'] === undefined) {
+   roleId = headers['gameroleid'];
+  } else {
+   roleId = headers['camproleid'];
+  }
+const body = {"cSystem":"ios","h5Get":1,"roleId": roleId};
 //console.log(body);
 
 /*
