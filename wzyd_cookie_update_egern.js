@@ -44,11 +44,11 @@ cookie格式
 //const sig = $request.headers['sig'];
 //const timestamp = $request.headers['timestamp'];
 /*
-const appid = $request.headers['appid'];
+//const appid = $request.headers['appid'];
 const openid = $request.headers['openid'];
 const token = $request.headers['token'];
 const userId = $request.headers['userid'];
-const source = $request.headers['source'];
+//const source = $request.headers['source'];
 */
 //const header = {"appid": appid,"openid": openid,"msdkEncodeParam": msdkEncodeParam,"sig": sig,"userId": userId,"source": source,"encode": 2,"timestamp": timestamp,"algorithm": "v2","version": "3.1.96i"};
 //const header = {"appid": appid,"openid": openid,"token": token,"userId": userId,"source": source,"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
@@ -57,7 +57,7 @@ const source = $request.headers['source'];
 const headers = $request.headers
 console.log(headers);
 //获取header和body
-const header = {"appid": headers['appid'],"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"source": headers['source'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
+const header = {"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
 if (headers['camproleid'] === null || headers['camproleid'] === undefined) {
    roleId = headers['gameroleid'];
