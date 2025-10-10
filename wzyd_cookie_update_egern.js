@@ -60,9 +60,9 @@ console.log(headers);
 const header = {"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 //console.log(header);
 if (headers['camproleid'] === null || headers['camproleid'] === undefined) {
-   roleId = headers['gameroleid'];
+   const roleId = headers['gameroleid'];
   } else {
-   roleId = headers['camproleid'];
+   const roleId = headers['camproleid'];
   }
 const body = {"cSystem":"ios","h5Get":1,"roleId": roleId};
 //console.log(body);
