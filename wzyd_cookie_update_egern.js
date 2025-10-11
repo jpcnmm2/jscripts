@@ -59,11 +59,10 @@ const headers = $request.headers
 //获取header和body
 const header = {"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
 console.log(header);
-if (headers['camproleid'] === null || headers['camproleid'] === undefined) {
-   const roleId = headers['gameroleid'];
-  } else {
-   const roleId = headers['camproleid'];
-  }
+const roleId = headers['camproleid'];
+if (roleId === null || roleId === undefined) {
+   roleId = headers['gameroleid'];
+}
 const body = {"cSystem":"ios","h5Get":1,"roleId": roleId};
 console.log(body);
 
