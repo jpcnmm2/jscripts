@@ -87,7 +87,7 @@ async function getScriptUrl() {
 (async () => {
   //如果参数不全，不进行后续操作；
   if (headers['token'] === null || headers['token'] === undefined) {
-   return;
+   	  return $.notify(title, '参数不完整❌，请查看日志！', ``);
   }
   //  const ql_script = (await getScriptUrl()) || "";
   //  eval(ql_script);
@@ -249,18 +249,20 @@ async function getScriptUrl() {
   console.log(responseedit2);
   
   if ((responseedit.code == 200) && (responseedit2.code == 200)) {  
-  //const rescron = await $.ql.selectTask('wzyd_sign');
-  //console.log(`任务查询结果：${rescron}`);
-  //console.log(rescron);
-
-  //const taskIDs = rescron.data.data.map((item) => item.id);
-  //console.log(`任务列表：${taskIDs}`);
-  //console.log(taskIDs);
-    
-  //const resrun =  await $.ql.runTask(taskIDs);   //抓取签到请求的cookie，不再重复执行签到
-  console.log("执行响应：")
-  //console.log(resrun)
-  return $.notify(title, '已更新到青龙面板🎉', ``);
+      return $.notify(title, '已更新到青龙面板🎉', ``);
+	  //抓取签到请求的cookie，不再重复执行签到
+	  /*
+	  const rescron = await $.ql.selectTask('wzyd_sign');
+	  //console.log(`任务查询结果：${rescron}`);
+	  //console.log(rescron);
+	
+	  const taskIDs = rescron.data.data.map((item) => item.id);
+	  //console.log(`任务列表：${taskIDs}`);
+	  //console.log(taskIDs); 
+	  const resrun =  await $.ql.runTask(taskIDs);
+	  //console.log("执行响应：")
+	  //console.log(resrun)
+	  */
  } else {
   return $.notify(title, "更新失败❌，请重试！", "");
  } 
