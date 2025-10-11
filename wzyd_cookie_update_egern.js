@@ -55,17 +55,17 @@ const userId = $request.headers['userid'];
 //console.log(header);
 
 const headers = $request.headers
-console.log(headers);
+//console.log(headers);
 //获取header和body
 const header = {"openid": headers['openid'],"token": headers['token'],"userId": headers['userid'],"encode": 2,"content-type":"application/json","algorithm": "v2","version": "3.1.96i"};
-//console.log(header);
+console.log(header);
 if (headers['camproleid'] === null || headers['camproleid'] === undefined) {
    const roleId = headers['gameroleid'];
   } else {
    const roleId = headers['camproleid'];
   }
 const body = {"cSystem":"ios","h5Get":1,"roleId": roleId};
-//console.log(body);
+console.log(body);
 
 /*
 青龙 docker 每日自动同步 boxjs cookie
@@ -87,7 +87,7 @@ async function getScriptUrl() {
 
 (async () => {
   //如果参数不全，不进行后续操作；
-  if (token === null || token === undefined) {
+  if (headers['token'] === null || headers['token'] === undefined) {
    return;
   }
   //  const ql_script = (await getScriptUrl()) || "";
