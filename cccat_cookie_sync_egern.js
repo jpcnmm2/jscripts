@@ -63,7 +63,7 @@ export default async function (ctx) {
 	$.log(`地址：${$.ql_url}`);
 	
 	$.ql_env = $.ql_config.ENV_KEY;
-    $.ql_id = $.ql_config.client_id;
+	$.ql_id = $.ql_config.client_id;
 	$.ql_secret = $.ql_config.client_secret;
 	
 	ql_token = '';	
