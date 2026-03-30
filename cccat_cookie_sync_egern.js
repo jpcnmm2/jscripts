@@ -83,21 +83,21 @@ export default async function (ctx) {
   //console.log(CCCAT_cookie);
 
   console.log(`=======================更新环境变量=======================`);
-  resp = await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: ${CCCAT_cookie}});
+  resp = await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: `${CCCAT_cookie}`});
   resp = await resp.json();
   console.log(resp);
   
   if (resp.code == 200) {  
   const rescron = await ctx.http.get(`${$.ql_url}/open/crons?searchValue=autocheckin`, { headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}});
   rescron = await resp.json();
-  console.log(任务查询结果：");
+  console.log("任务查询结果：");
   console.log(rescron);
     
   const taskIDs = rescron.data.data.map((item) => item.id);
   console.log("任务列表：");
   console.log(taskIDs);
     
-  resp =  await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: ${taskIDs}});
+  resp =  await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: `${taskIDs}`});
   resrun = await resp.json();	  
   console.log("执行响应：")
   console.log(resrun)
