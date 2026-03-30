@@ -49,16 +49,8 @@ const title = "🐯Cookie更新到青龙";
 
 //const jd_cookies = JSON.parse($.read("#CookiesJD") || "[]");
 
-async function getScriptUrl() {
-  const response = await $.http.get({
-    url: "https://raw.githubusercontent.com/jpcnmm2/jscripts/refs/heads/main/ql_openapi.js",
-  });
-  return response.body;
-}
 
 export default async function (ctx) {
-//  const ql_script = (await getScriptUrl()) || "";
-//  eval(ql_script);
 
 	try {
 	  $.ql_config = JSON.parse($.read("#ql"));
@@ -66,136 +58,47 @@ export default async function (ctx) {
 	  $.ql_config = {};
 	}
 	$.ql_url = $.ql_config.ip;
+	$.ql_env = $.ql_config.ENV_KEY;
 	
 	$.log(`地址：${$.ql_url}`);
 	
-	$.ql = {
-	  type: "api",
-	  headers: {
-	    "Content-Type": `application/json;charset=UTF-8`,
-	    Authorization: "",
-	  },
+	
+	
+  const resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_config.client_id}&client_secret=${$.ql_config.client_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});	        });
+  const respdata = await resp.json();
+  if (respdata.code ===200) {
+	  $.log(`登陆成功`);
+	  const ql_token = respdata.data.token;
+  } else {
+	  $.log(respdata);
+	  $.log(`登陆失败：${respdata.message}`);
+  }
 
-	  add(records) {
-	    if (!this.headers.Authorization) return;
-	    const opt = {
-	      url: `${$.ql_url}/${this.type}/envs`,
-	      headers: this.headers,
-	      body: JSON.stringify(records),
-	    };
-	    return $.http.post(opt).then((response) => JSON.parse(response.body));
-	  },
-	  edit(records) {
-	    if (!this.headers.Authorization) return;
-	    const opt = {
-	      url: `${$.ql_url}/${this.type}/envs`,
-	      headers: this.headers,
-	      body: JSON.stringify(records),
-	    };
-	    return $.http.put(opt).then((response) => JSON.parse(response.body));
-	  },
-	  select(searchValue = "JD_COOKIE") {
-	    if (!this.headers.Authorization) return;
-	    const opt = {
-	      url: `${$.ql_url}/${this.type}/envs?searchValue=${searchValue}`,
-	      headers: this.headers,
-	    };
-	    return $.http.get(opt).then((response) => JSON.parse(response.body));
-	  },
-	   selectTask(searchValue = "autocheckin") {
-	    if (!this.headers.Authorization) return;
-	    const opt = {
-	      url: `${$.ql_url}/${this.type}/crons?searchValue=${searchValue}`,
-	      headers: this.headers,
-	    };
-	    return $.http.get(opt).then((response) => JSON.parse(response.body));
-	  },
-	   runTask(ids) {
-	    if (!this.headers.Authorization) return;
-	    const opt = {
-	      url: `${$.ql_url}/${this.type}/crons/run`,
-	      headers: this.headers,
-	      body: JSON.stringify(ids),
-	    };
-	    return $.http.put(opt).then((response) => JSON.parse(response.body));
-	  },
-	  initial: async () => {
-	    if ($.ql_url && !$.ql_url.match(/^(http|https)/))
-	      $.ql_url = `http://${$.ql_url}`;
-	
-	    $.application = {
-	      client_id: $.ql_config.client_id,
-	      client_secret: $.ql_config.client_secret,
-	    };
-	
-	    $.ql_account = {
-	      username: $.ql_config.username,
-	      password: $.ql_config.password,
-	    };
-	
-	    if ($.ql_config.is_pwd === "true") {
-	      const options = {
-	        url: `${$.ql_url}/api/user/login`,
-	        body: JSON.stringify($.ql_account),
-	        headers: {
-	          "Content-Type": `application/json;charset=UTF-8`,
-	        },
-	      };
-	      let response = await $.http.post(options);
-	      response = JSON.parse(response.body);
-	      if (response.code === 200) {
-	        $.ql.type = "api";
-	        $.ql.headers.Authorization = `Bearer ${response.data.token}`;
-	        $.log(`登陆成功：${response.data.lastaddr}`);
-	        $.log(`ip:${response.data.lastip}`);
-	      } else {
-	        $.log(response);
-	        $.log(`登陆失败：${response.message}`);
-	      }
-	    } else {
-	      const options = {
-	        url: `${$.ql_url}/open/auth/token?client_id=${$.application.client_id}&client_secret=${$.application.client_secret}`,
-	        headers: {
-	          "Content-Type": `application/json;charset=UTF-8`,
-	        },
-	      };
-	      let response = await $.http.get(options);
-	      response = JSON.parse(response.body);
-	      if (response.code === 200) {
-	        $.ql.type = "open";
-	        $.ql.headers.Authorization = `Bearer ${response.data.token}`;
-	        $.log(`登陆成功`);
-	      } else {
-	        $.log(response);
-	        $.log(`登陆失败：${response.message}`);
-	      }
-	    }
-	  },
-	};	
-	
-  await $.ql.initial();
-
-  const response = await $.ql.select('CCCAT_COOKIE');
   console.log(`=======================查询环境变量=======================`);
-  const id = response.data[0].id;
-
+  resp = await ctx.http.get(`${$.ql_url}/open/envs?searchValue=${$.ql_env}`, { headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}});
+  resp = await resp.json();
+  const id = resp.data[0].id;
   
   const CCCAT_cookie = {"name":"CCCAT_COOKIE", "value":cookie, "id":id,"remarks":""}
-  //console.log(CCCAT_cookie); 
-  const responseadd = await $.ql.edit(CCCAT_cookie);
+  //console.log(CCCAT_cookie);
+
   console.log(`=======================更新环境变量=======================`);
-  console.log(responseadd);
+  resp = await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: ${CCCAT_cookie}});
+  resp = await resp.json();
+  console.log(resp);
   
-  if (responseadd.code == 200) {  
-  const rescron = await $.ql.selectTask('autocheckin');
-  console.log("任务查询结果：");
+  if (resp.code == 200) {  
+  const rescron = await ctx.http.get(`${$.ql_url}/open/crons?searchValue=autocheckin`, { headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}});
+  rescron = await resp.json();
+  console.log(任务查询结果：");
   console.log(rescron);
     
   const taskIDs = rescron.data.data.map((item) => item.id);
   console.log("任务列表：");
   console.log(taskIDs);
     
-  const resrun =  await $.ql.runTask(taskIDs);
+  resp =  await ctx.http.put(`${$.ql_url}/open/envs`, {headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}, body: ${taskIDs}});
+  resrun = await resp.json();	  
   console.log("执行响应：")
   console.log(resrun)
   return $.notify(title, '更新成功🎉', ``);
