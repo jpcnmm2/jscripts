@@ -58,6 +58,9 @@ export default async function (ctx) {
 	  $.ql_config = {};
 	}
 	$.ql_url = $.ql_config.ip;
+	if ($.ql_url && !$.ql_url.match(/^(http|https)/))
+	      $.ql_url = `http://${$.ql_url}`;
+	
 	$.ql_env = $.ql_config.ENV_KEY;
 	
 	$.log(`地址：${$.ql_url}`);
