@@ -69,23 +69,24 @@ async function getScriptUrl() {
   //console.log(CCCAT_cookie); 
   const responseadd = await $.ql.edit(CCCAT_cookie);
   console.log(`=======================更新环境变量=======================`);
-  console.log(responseadd);
+  //console.log(responseadd);
   
   if (responseadd.code == 200) {  
-  const rescron = await $.ql.selectTask('autocheckin');
-  console.log("任务查询结果：");
-  console.log(rescron);
-    
-  const taskIDs = rescron.data.data.map((item) => item.id);
-  console.log("任务列表：");
-  console.log(taskIDs);
-    
-  const resrun =  await $.ql.runTask(taskIDs);
-  console.log("执行响应：")
-  console.log(resrun)
-  return $.notify(title, '更新成功🎉', ``);
+    console.log(`=======================查询任务ID=======================`);
+    const rescron = await $.ql.selectTask('autocheckin');
+    console.log("任务查询结果：");
+    console.log(rescron);
+      
+    const taskIDs = rescron.data.data.map((item) => item.id);
+    console.log("任务列表：");
+    console.log(taskIDs);
+    console.log(`=======================运行任务=======================`); 
+    const resrun =  await $.ql.runTask(taskIDs);
+    console.log("执行响应：")
+    console.log(resrun)
+    return $.notify(title, '更新成功🎉', ``);
  } else {
-  return $.notify(title, "更新失败❌，请重试！", "");
+    return $.notify(title, "更新失败❌，请重试！", "");
  } 
 
 })()
