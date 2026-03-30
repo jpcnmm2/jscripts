@@ -63,13 +63,11 @@ export default async function (ctx) {
 	$.log(`地址：${$.ql_url}`);
 	
 	$.ql_env = $.ql_config.ENV_KEY;
-	$.ql_id = $.ql_config.client_id;
-	$.ql_secret = $.ql_config.client_secret;
 	
 	let ql_token = '';	
 	
 	
-  resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_id}&client_secret=${$.ql_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});
+  let resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_config.client_id}&client_secret=${$.ql_config.client_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});
   const respdata = await resp.json();
   if (respdata.code ===200) {
 	  $.log(`登陆成功`);
