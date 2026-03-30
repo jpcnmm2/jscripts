@@ -60,14 +60,16 @@ export default async function (ctx) {
 	$.ql_url = $.ql_config.ip;
 	if ($.ql_url && !$.ql_url.match(/^(http|https)/))
 	      $.ql_url = `http://${$.ql_url}`;
-	
-	$.ql_env = $.ql_config.ENV_KEY;
-	
 	$.log(`地址：${$.ql_url}`);
 	
+	$.ql_env = $.ql_config.ENV_KEY;
+    $.ql_id = $.ql_config.client_id;
+	$.ql_secret = $.ql_config.client_secret;
+	
+	ql_token = '';	
 	
 	
-  const resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_config.client_id}&client_secret=${$.ql_config.client_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});
+  resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_id}&client_secret=${$.ql_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});
   const respdata = await resp.json();
   if (respdata.code ===200) {
 	  $.log(`登陆成功`);
@@ -91,8 +93,8 @@ export default async function (ctx) {
   console.log(resp);
   
   if (resp.code == 200) {  
-  const rescron = await ctx.http.get(`${$.ql_url}/open/crons?searchValue=autocheckin`, { headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}});
-  rescron = await resp.json();
+     rescron = await ctx.http.get(`${$.ql_url}/open/crons?searchValue=autocheckin`, { headers:{"Content-Type": `application/json;charset=UTF-8`, "Authorization": `Bearer ${ql_token}`}});
+  rescron = await respcron.json();
   console.log("任务查询结果：");
   console.log(rescron);
     
