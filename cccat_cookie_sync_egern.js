@@ -66,14 +66,14 @@ export default async function (ctx) {
 	$.ql_id = $.ql_config.client_id;
 	$.ql_secret = $.ql_config.client_secret;
 	
-	ql_token = '';	
+	let ql_token = '';	
 	
 	
   resp = await ctx.http.get(`${$.ql_url}/open/auth/token?client_id=${$.ql_id}&client_secret=${$.ql_secret}`, { headers:{"Content-Type": `application/json;charset=UTF-8`}});
   const respdata = await resp.json();
   if (respdata.code ===200) {
 	  $.log(`登陆成功`);
-	  const ql_token = respdata.data.token;
+	  ql_token = respdata.data.token;
   } else {
 	  $.log(respdata);
 	  $.log(`登陆失败：${respdata.message}`);
